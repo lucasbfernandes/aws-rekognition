@@ -1,6 +1,6 @@
 <template>
 	<div class="Home">
-		teste
+		Home
 	</div>
 </template>
 <script>
@@ -8,4 +8,4 @@
 		name: 'home'
 	}
 </script>
-<style lang="scss" src="./style.scss"></style>
+<style scoped src="./style.scss"></style>
