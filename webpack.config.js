@@ -47,9 +47,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      vue: 'vue/dist/vue.js',
-      core: path.resolve(__dirname, './src/core'),
-      modules: path.resolve(__dirname, './src/modules')
+      'vue': 'vue/dist/vue.js',
+      '@core': path.resolve(__dirname, './src/core'),
+      '@modules': path.resolve(__dirname, './src/modules'),
+      '@styles': path.resolve(__dirname, './src/core/styles'),
     }
   },
 
