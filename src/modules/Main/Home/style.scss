@@ -1,3 +1,5 @@
-.Home {
-	background-color: $color-black;
+@import '~@styles/variables/variables';
+
+.Main {
+  border: 1px solid $color-black;
 }
