@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@modules/Main/Home';
 import Picture from '@modules/Main/Picture';
-import Login from '@modules/Main/Login';
+import Login from '@modules/Login';
 import Main from '@modules/Main';
 
 Vue.use(Router);
