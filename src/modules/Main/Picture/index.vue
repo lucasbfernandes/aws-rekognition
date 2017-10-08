@@ -1,11 +1,11 @@
 <template>
-	<div class="Main">
-		<router-view></router-view>
+	<div class="Home">
+		Picture
 	</div>
 </template>
 <script>
 	export default {
-		name: 'main'
+		name: 'picture'
 	}
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
