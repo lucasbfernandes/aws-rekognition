@@ -24,13 +24,15 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-          { loader: 'sass-loader', 
-            options: {
-              data: '@import "variables";',
-              includePaths: [path.resolve(__dirname, './src/core/style/')]
-            }
-          } 
+          { loader: 'sass-loader' },
         ]
+      },
+      {
+        test: /\.(gif|png|jpeg|jpg|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
       },
       { 
         test: /\.js(x)?$/, 
@@ -51,6 +53,7 @@ module.exports = {
       '@core': path.resolve(__dirname, './src/core'),
       '@modules': path.resolve(__dirname, './src/modules'),
       '@styles': path.resolve(__dirname, './src/core/styles'),
+      '@images': path.resolve(__dirname, './src/core/images'),
     }
   },
 
