@@ -1,4 +1,107 @@
 @import '~@styles/variables/variables';
+@import '~@styles/mixins/mixins';
 
 .Main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background: url('../../core/images/login-background-0001.jpg') no-repeat center;
+
+  &__header {
+    position: absolute;
+    box-sizing: border-box;
+    height: 12%;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    padding: 15px 15px;
+
+    &__logo-container {
+      width: 100%;
+
+      @include phone {
+        text-align: center;
+      }
+
+      @include tablet {
+        text-align: center;
+      }
+
+      @include desktop {
+        text-align: left;
+      }
+    }
+
+    &__logo {
+      margin-right: 15px;
+
+      @include phone {
+        width: 180px;
+      }
+
+      @include tablet {
+        width: 150px;
+      }
+
+      @include desktop {
+        width: 150px;
+      }
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 15px 15px;
+
+    @include phone {
+      height: 12%;
+    }
+
+    @include tablet {
+      height: 20%;
+    }
+
+    @include desktop {
+      height: 12%;
+    }
+
+    &__logo-container {
+      width: 100%;
+
+      @include phone {
+        text-align: center;
+      }
+
+      @include tablet {
+        text-align: center;
+      }
+
+      @include desktop {
+        text-align: right;
+      }
+    }
+
+    &__logo {
+      margin-left: 15px;
+
+      @include phone {
+        width: 125px;
+      }
+
+      @include tablet {
+        width: 150px;
+      }
+
+      @include desktop {
+        width: 150px;
+      }
+    }
+  }
 }

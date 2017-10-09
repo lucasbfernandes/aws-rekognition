@@ -4,7 +4,7 @@ import Home from '@modules/Main/Home';
 import Picture from '@modules/Main/Picture';
 import About from '@modules/Main/About';
 import Result from '@modules/Main/Result';
-import Login from '@modules/Login';
+import Login from '@modules/Main/Login';
 import Admin from '@modules/Admin';
 import Main from '@modules/Main';
 
@@ -37,13 +37,13 @@ export default new Router({
           path: 'result',
           name: 'result',
           component: Result,
-        }
+        },
+        {
+          path: '/login',
+          name: 'login',
+          component: Login,
+        },
       ]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login,
     },
     {
       path: '/admin',

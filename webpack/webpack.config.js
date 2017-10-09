@@ -19,8 +19,16 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.(png|svg|woff|woff2|ttf|eot)/, loader: 'file-loader' },
-      { test: /\.(css|scss)$/,
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.(gif|png|jpeg|jpg|svg|woff|woff2|ttf|eot)/,
+        loader: 'file-loader'
+      },
+      { 
+        test: /\.(css|scss)$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
@@ -28,21 +36,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(gif|png|jpeg|jpg|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]'
-        }
-      },
-      { 
         test: /\.js(x)?$/, 
         exclude: /node_modules/,
         use: 'babel-loader'
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
+      }
     ],
   },
 
@@ -50,10 +47,10 @@ module.exports = {
     extensions: ['.js', '.vue'],
     alias: {
       'vue': 'vue/dist/vue.js',
-      '@core': path.resolve(__dirname, './src/core'),
-      '@modules': path.resolve(__dirname, './src/modules'),
-      '@styles': path.resolve(__dirname, './src/core/styles'),
-      '@images': path.resolve(__dirname, './src/core/images'),
+      '@core': path.resolve(__dirname, '../src/core'),
+      '@modules': path.resolve(__dirname, '../src/modules'),
+      '@styles': path.resolve(__dirname, '../src/core/styles'),
+      '@images': path.resolve(__dirname, '../src/core/images'),
     }
   },
 

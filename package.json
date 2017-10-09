@@ -5,7 +5,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --history-api-fallback --hot",
+    "start": "webpack-dev-server --config webpack/webpack.dev.config.js --history-api-fallback --hot",
     "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
   },
   "devDependencies": {
