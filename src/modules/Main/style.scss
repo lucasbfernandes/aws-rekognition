@@ -19,12 +19,35 @@
     padding: 15px 15px;
 
     &__logo-container {
-      float: left;
+      width: 100%;
+
+      @include phone {
+        text-align: center;
+      }
+
+      @include tablet {
+        text-align: center;
+      }
+
+      @include desktop {
+        text-align: left;
+      }
     }
 
     &__logo {
-      width: 150px;
       margin-right: 15px;
+
+      @include phone {
+        width: 180px;
+      }
+
+      @include tablet {
+        width: 150px;
+      }
+
+      @include desktop {
+        width: 150px;
+      }
     }
   }
 

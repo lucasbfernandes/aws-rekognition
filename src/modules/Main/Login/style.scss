@@ -11,10 +11,21 @@
     position: relative;
     background-color: $color-white;
     opacity: 0.8;
-    width: 800px;
     height: 40%;
     margin: 0 auto;
     border-radius: 8px;
+
+    @include phone {
+      width: 90%;
+    }
+
+    @include tablet {
+      width: 70%;
+    }
+
+    @include desktop {
+      width: 70%;
+    }
   }
 
   &__footer {
