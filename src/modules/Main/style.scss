@@ -1,5 +1,29 @@
 @import '~@styles/variables/variables';
+@import '~@styles/mixins/mixins';
 
 .Main {
-  border: 1px solid $color-black;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background: url('../../core/images/login-background-0001.jpg') no-repeat center;
+
+  &__footer {
+    position: absolute;
+    height: 12%;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  &__partners-container {
+    float: right;
+  }
+
+  &__logo {
+    width: 150px;
+    margin-left: 15px;
+  }
 }

@@ -1,0 +1,19 @@
+@import '../variables/variables';
+
+@mixin phone {
+  @media #{$phone} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tablet} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$desktop} {
+    @content;
+  }
+}

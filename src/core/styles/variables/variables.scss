@@ -29,3 +29,12 @@ $color-sw-blue-zodiac   : #0C1C35;
 $color-sw-blue-bayoux   : #3E5E77;
 $color-sw-fun-blue      : #1A529D;
 $color-sw-biscay        : #192F58;
+
+$media-xsm          : 320px;
+$media-sm           : 380px;
+$media-md           : 500px;
+$media-lg           : 780px;
+
+$phone: "(max-width: #{$media-md})";
+$tablet: "(min-width: #{$media-md}) and (min-height: #{$media-sm})";
+$desktop: "(min-width: #{$media-lg})";
