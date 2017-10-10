@@ -28,7 +28,17 @@
   &__logo {
 
     &__img {
-      width: 150px;
+      @include phone {
+        width: 100px;
+      }
+
+      @include tablet {
+        width: 100px;
+      }
+
+      @include desktop {
+        width: 150px;
+      }
     }
 
     &--header {

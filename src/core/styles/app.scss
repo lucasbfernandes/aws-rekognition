@@ -1,3 +1,21 @@
 @import '~normalize.css';
 @import './third-party/element-theme/index.css';
 @import './font-faces/star-wars/font-faces';
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+input {
+  outline: 0;
+}
+
+.el-upload--picture-card {
+  background-color: transparent !important;
+}

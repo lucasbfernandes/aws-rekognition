@@ -10,22 +10,24 @@
   &__box {
     position: relative;
     background-color: rgba(68, 68, 68, 0.2);
-    min-height: 40%;
     margin: 0 auto;
     border-radius: 8px;
     font-family: StarJedi;
     padding: 5px 5px;
 
     @include phone {
-      width: 80%;
+      width: 300px;
+      min-height: 300px;
     }
 
     @include tablet {
-      width: 70%;
+      width: 400px;
+      min-height: 280px;
     }
 
     @include desktop {
-      width: 40%;
+      width: 400px;
+      min-height: 300px;
     }
 
     &__header {

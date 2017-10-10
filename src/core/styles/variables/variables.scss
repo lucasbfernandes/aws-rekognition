@@ -37,6 +37,6 @@ $media-sm           : 380px;
 $media-md           : 500px;
 $media-lg           : 780px;
 
-$phone: "(max-width: #{$media-md})";
-$tablet: "(min-width: #{$media-md}) and (min-height: #{$media-sm})";
+$phone: "(min-width: #{$media-xsm})";
+$tablet: "(min-width: #{$media-md})";
 $desktop: "(min-width: #{$media-lg})";
