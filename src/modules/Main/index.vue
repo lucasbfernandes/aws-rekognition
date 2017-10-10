@@ -1,5 +1,6 @@
 <template>
   <div class="Main">
+    <router-view></router-view>
     <header class="Main__description Main__description--header">
       <el-row type="flex" class="row-bg" justify="start">
         <el-col :span="24">
@@ -9,9 +10,6 @@
         </el-col>
       </el-row>
     </header>
-    <main>
-      <router-view></router-view>
-    </main>
     <footer class="Main__description Main__description--footer">
       <el-row type="flex" class="row-bg" justify="end">
         <el-col :span="24">
