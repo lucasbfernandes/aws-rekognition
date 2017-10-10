@@ -9,11 +9,10 @@
           class="Picture__main__upload"
           action=""
           :auto-upload="false"
-          :on-change="handlePictureUploadChange"
-          :on-remove="handlePictureRemoval"
-          :file-list="picturesList"
-          list-type="picture-card">
-          <i class="el-icon-plus"></i>
+          :show-file-list="false"
+          :on-change="onChangePicture">
+          <img v-if="imageUrl" :src="imageUrl" class="Picture__main__picture">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </main>
       <footer class="Picture__footer">
@@ -27,27 +26,14 @@
     name: 'picture',
     data() {
       return {
-        picturesList: [],
-        acceptedMimeTypesArray: ['image/jpg', 'image/jpeg', 'image/png'],
+          imageUrl: '',
       }
     },
     methods: {
-     handlePictureRemoval() {
-        this.picturesList = [];
+      onChangePicture(file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
       },
-
-      handlePictureUploadChange(file, fileList) {
-        if (this.acceptedMimeTypesArray.indexOf(file.raw.type) !== -1) {
-          this.picturesList = fileList.slice(-1);
-        } else {
-          if (this.picturesList.length) {
-            this.picturesList = fileList.slice(0, 1);
-          } else {
-            this.picturesList = [];
-          }
-        }
-      },
-    },
+    }
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>

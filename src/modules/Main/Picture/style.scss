@@ -38,8 +38,15 @@
 
   &__main {
     text-align: center;
+
     &__upload {
 
+    }
+
+    &__picture {
+      width: 150px;
+      height: 150px;
+      display: block;
     }
   }
 
