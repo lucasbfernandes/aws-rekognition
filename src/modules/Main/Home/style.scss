@@ -31,7 +31,7 @@
     }
 
     &__header {
-      color: $color-sw-tall-poppy;
+      color: $color-white;
       text-align: center;
     }
   }
@@ -46,11 +46,13 @@
     bottom: 0;
 
     &__button--info {
-      background-color: $color-sw-sycamore;
-      border-color: $color-sw-sycamore;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.0);
+      border-color: $color-gold;
     }
 
     &__button--picture {
+      cursor: pointer;
       background-color: $color-sw-blue-bayoux;
       border-color: $color-sw-blue-bayoux;
     }

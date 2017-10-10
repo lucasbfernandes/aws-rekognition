@@ -31,7 +31,7 @@
     }
 
     &__header {
-      color: $color-sw-tall-poppy;
+      color: $color-white;
       text-align: center;
     }
   }
@@ -41,7 +41,14 @@
 
     &__upload {
 
+      &__icon {
+        color: #fff;
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+      }
     }
+
 
     &__picture {
       width: 150px;
@@ -51,17 +58,20 @@
   }
 
   &__footer {
-    position: absolute;
-    padding: 15px 0px;
+    padding: 20px 0px 10px 0px;
     text-align: center;
     width: 100%;
-    right: 0;
-    left: 0;
-    bottom: 0;
 
     &__button--send {
+      cursor: pointer;
       background-color: $color-sw-blue-bayoux;
       border-color: $color-sw-blue-bayoux;
+    }
+
+    &__button--previous {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.0);
+      border-color: $color-gold;
     }
   }
 }

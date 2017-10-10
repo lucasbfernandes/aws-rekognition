@@ -12,10 +12,11 @@
           :show-file-list="false"
           :on-change="onChangePicture">
           <img v-if="imageUrl" :src="imageUrl" class="Picture__main__picture">
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <i v-else class="el-icon-plus Picture__main__upload__icon"></i>
         </el-upload>
       </main>
       <footer class="Picture__footer">
+        <el-button @click="onClickPrevious" class="Picture__footer__button--previous" type="primary" size="large">Voltar</el-button>
         <el-button class="Picture__footer__button--send" type="primary" size="large">Enviar</el-button>
       </footer>
     </div>
@@ -33,6 +34,9 @@
       onChangePicture(file) {
         this.imageUrl = URL.createObjectURL(file.raw);
       },
+      onClickPrevious() {
+        this.$router.push({ path: 'home' });
+      }
     }
   }
 </script>

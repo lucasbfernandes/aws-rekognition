@@ -4,6 +4,7 @@
 .Main {
   position: fixed;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -19,12 +20,12 @@
 
     &--header {
       top: 0;
-      background: #000;
+      background: $color-background-grey;
     }
 
     &--footer {
       bottom: 0;
-      background: #000;
+      background: $color-background-grey;
     }
   }
 

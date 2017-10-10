@@ -5,12 +5,10 @@
         <h1>qual o seu lado da força?</h1>
       </header>
       <main>
-        <el-button 
-          @click="doLogin"
-          type="primary">Logar com facebook</el-button>
+        
       </main>
       <footer class="Login__footer">
-        <el-button class="Login__footer__button" type="primary" size="large">Entre com o Facebook</el-button>
+        <el-button @click="doLogin" class="Login__footer__button" type="primary" size="large">Entre com o Facebook</el-button>
       </footer>
     </div>
   </div>

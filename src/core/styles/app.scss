@@ -19,3 +19,10 @@ input {
 .el-upload--picture-card {
   background-color: transparent !important;
 }
+
+.el-upload {
+  border: 2px dashed #fff !important;
+  border-radius: 6px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}

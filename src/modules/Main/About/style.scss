@@ -8,31 +8,69 @@
   width: 100%;
 
   &__box {
-    position: relative;
-    background-color: rgba(68, 68, 68, 0.2);
-    margin: 0 auto;
-    border-radius: 8px;
-    font-family: StarJedi;
-    padding: 5px 5px;
-
-    @include phone {
-      width: 300px;
-      min-height: 300px;
-    }
-
-    @include tablet {
-      width: 400px;
-      min-height: 280px;
-    }
-
-    @include desktop {
-      width: 400px;
-      min-height: 300px;
-    }
 
     &__header {
-      color: $color-sw-tall-poppy;
-      text-align: center;
+      color: $color-gold;
+
+      &__buttons {
+        position: absolute;
+        padding: 15px 0px;
+        text-align: center;
+        width: 100%;
+        right: 0;
+        left: 0;
+        top: 0;
+        margin-top: 80px;
+
+        &__button--previous {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.0);
+          border-color: $color-gold;
+        }
+
+        &__button--more {
+          cursor: pointer;
+          background-color: $color-sw-blue-bayoux;
+          border-color: $color-sw-blue-bayoux;
+        }
+      }
+
+      .titles{
+        position: absolute;
+        width: 18em;
+        height: 50em;
+        bottom: 0;
+        left: 50%;
+        margin-left: -9em;
+        font-size: 150%;
+        font-weight: bold;
+        text-align: justify;
+        overflow: hidden;
+        transform-origin: 50% 100%;
+        transform: perspective(250px) rotateX(15deg);
+
+        &:after {
+          position: absolute;
+          content: ' ';
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 60%;
+          background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+          pointer-events: none;
+        }
+
+        .titlecontent{
+          position: absolute;
+          top: 100%;
+          animation: scroll 70s linear 1s infinite;
+        }
+
+        @keyframes scroll {
+          0% { top: 100%; }
+          100% { top: -170%; }
+        }
+      }
     }
   }
 

@@ -6,7 +6,9 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  height: 1000px;
+  h1 { 
+    color:#fff; 
+  }
 
   &__box {
     position: relative;
@@ -32,14 +34,13 @@
     }
 
     &__header {
-      color: $color-sw-tall-poppy;
+      color: $color-white;
       text-align: center;
     }
   }
 
   &__footer {
-    position: absolute;
-    padding: 15px 0px;
+    padding: 40px 0px 0px 0px;
     text-align: center;
     width: 100%;
     right: 0;
