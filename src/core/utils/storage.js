@@ -5,7 +5,8 @@ class Storage {
 	}
 
 	static get(key) {
-		window.localStorage.localStorage.getItem(key);
+		let string =  window.localStorage.getItem(key)
+		return JSON.parse(string);
 	}
 
 }

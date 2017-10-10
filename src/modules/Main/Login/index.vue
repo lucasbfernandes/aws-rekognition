@@ -18,11 +18,30 @@
 
   export default {
     name: 'login',
+    mounted() {
+      this.checkLoginState();
+    },
     methods: {
+      doRedirectPage() {
+        this.$router.push({ path: 'home' });
+      },
+      doSaveLoginInformation() {
+        storage.set('FB', response);
+        this.doRedirectPage();
+      },
+      doLogin() {
+        FB.login(
+          response => this.doSaveLoginInformation(response)
+        )
+      },
       checkLoginState() {
-        FB.login(function(response){
-          storage.set('FB', response);
-        });
+        let fbStorage = storage.get('FB');
+
+        if (fbStorage && fbStorage.status === 'connected') {
+          this.doRedirectPage();
+        } else {
+          this.doLogin();
+        }
       }
     }
   }
