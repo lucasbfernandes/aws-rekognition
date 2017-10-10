@@ -9,14 +9,15 @@
 
   &__box {
     position: relative;
-    background-color: $color-white;
-    opacity: 0.8;
-    height: 40%;
+    background-color: rgba(68, 68, 68, 0.2);
+    min-height: 40%;
     margin: 0 auto;
     border-radius: 8px;
+    font-family: StarJedi;
+    padding: 5px 5px;
 
     @include phone {
-      width: 90%;
+      width: 80%;
     }
 
     @include tablet {
@@ -24,16 +25,27 @@
     }
 
     @include desktop {
-      width: 70%;
+      width: 40%;
+    }
+
+    &__header {
+      color: $color-sw-tall-poppy;
+      text-align: center;
     }
   }
 
   &__footer {
     position: absolute;
-    background-color: $color-tundora;
-    height: 30%;
+    padding: 15px 0px;
+    text-align: center;
     width: 100%;
     right: 0;
+    left: 0;
     bottom: 0;
+
+    &__button {
+      background-color: $color-san-marino;
+      border-color: $color-san-marino;
+    }
   }
 }

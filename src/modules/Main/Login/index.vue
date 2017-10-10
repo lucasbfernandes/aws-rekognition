@@ -1,14 +1,16 @@
 <template>
   <div class="Login">
     <div class="Login__box">
-      <header>
+      <header class="Login__box__header">
+        <h1>qual o seu lado?</h1>
       </header>
       <main>
         <el-button 
           @click="checkLoginState"
           type="primary">Logar com facebook</el-button>
       </main>
-      <footer>
+      <footer class="Login__footer">
+        <el-button class="Login__footer__button" type="primary" size="large">Descubra com o Facebook</el-button>
       </footer>
     </div>
   </div>
