@@ -6,7 +6,7 @@
       </header>
       <main>
         <el-button 
-          @click="checkLoginState"
+          @click="doLogin"
           type="primary">Logar com facebook</el-button>
       </main>
       <footer class="Login__footer">
@@ -27,7 +27,7 @@
       doRedirectPage() {
         this.$router.push({ path: 'home' });
       },
-      doSaveLoginInformation() {
+      doSaveLoginInformation(response) {
         storage.set('FB', response);
         this.doRedirectPage();
       },
@@ -41,8 +41,6 @@
 
         if (fbStorage && fbStorage.status === 'connected') {
           this.doRedirectPage();
-        } else {
-          this.doLogin();
         }
       }
     }
