@@ -51,6 +51,7 @@ module.exports = {
       '@modules': path.resolve(__dirname, '../src/modules'),
       '@styles': path.resolve(__dirname, '../src/core/styles'),
       '@images': path.resolve(__dirname, '../src/core/images'),
+      '@fonts': path.resolve(__dirname, '../src/core/fonts'),
     }
   },
 
