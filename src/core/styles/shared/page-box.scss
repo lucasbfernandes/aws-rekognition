@@ -71,6 +71,12 @@
       background-color: rgba(0, 0, 0, 0.0);
       border-color: $color-gold;
     }
+
+    &--previous-2 {
+      cursor: pointer;
+      background-color: $color-sw-blue-bayoux;
+      border-color: $color-sw-blue-bayoux;
+    }
   }
 
   &__upload {

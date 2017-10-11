@@ -1,8 +1,5 @@
 <template>
   <div class="PageBox About">
-    <div class="About__buttons">
-      <el-button class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
-    </div>
     <div class="About__text-container titles">
       <div class="titlecontent">
         <p style="text-align: center;">
@@ -26,15 +23,19 @@
         </p>
       </div>
     </div>
+    <div class="About__buttons">
+      <el-button @click="onClickPrevious" class="PageBox__button--previous-2" type="primary" size="large">Voltar</el-button>
+    </div>
   </div>
 </template>
 <script>
   export default {
-    name: 'about'
+    name: 'about',
+    methods: {
+      onClickPrevious() {
+        this.$router.push({ path: 'home' });
+      },
+    }
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
-
-<!--
-
--->

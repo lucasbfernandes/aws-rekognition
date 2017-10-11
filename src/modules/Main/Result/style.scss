@@ -4,6 +4,18 @@
   &__name {
     text-align: center;
     padding: 5px;
+
+    @include phone {
+      font-size: 10px;
+    }
+
+    @include tablet {
+      font-size: 12px;
+    }
+
+    @include desktop {
+      font-size: 14px;
+    }
   }
 }
 
