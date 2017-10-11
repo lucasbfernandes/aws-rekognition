@@ -46,8 +46,33 @@
         percentage: LocalStoragePersistence.get('compareResult').percentage,
       };
     },
+    mounted() {
+      this.fillUserInformation();
+    },
     methods: {
-    }
+      clearUserInformation() {
+        this.userClassification = null;
+        this.userPicture = null;
+        this.userName = null;
+        this.characterPicture = null;
+        this.characterName = null;
+        this.percentage = null;
+      },
+      fillUserInformation() {
+        this.userClassification = LocalStoragePersistence.get('compareResult').classification;
+        this.userPicture = LocalStoragePersistence.get('compareResult').picture;
+        this.userName = LocalStoragePersistence.get('FBData').username;
+        this.characterPicture = LocalStoragePersistence.get('compareResult').character_picture;
+        this.characterName = LocalStoragePersistence.get('compareResult').character_name;
+        this.percentage = LocalStoragePersistence.get('compareResult').percentage;
+      },
+      onClickPrevious() {
+        this.$router.push({ path: 'picture' });
+      }
+    },
+    beforeDestroy() {
+      this.clearUserInformation();
+    },
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
