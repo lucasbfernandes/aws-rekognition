@@ -26,3 +26,7 @@ input {
   position: relative !important;
   overflow: hidden !important;
 }
+
+.el-loading-mask {
+  background: rgba(0, 0, 0, .8) !important;
+}

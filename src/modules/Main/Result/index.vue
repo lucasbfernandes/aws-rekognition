@@ -25,7 +25,7 @@
 		</el-row>
       </main>
       <footer class="PageBox__footer">
-        <el-button class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
+        <el-button @click="onClickPrevious" class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
         <el-button class="PageBox__button--send-image" type="primary" size="large">Enviar para a TV</el-button>
         <el-button class="PageBox__button--send-image" type="primary" size="large">Compartilhar no Facebook</el-button>
       </footer>
@@ -39,16 +39,41 @@
     name: 'result',
     data() {
       return {
-        userClassification: LocalStoragePersistence.get('compareResult').classification,
-        userPicture: LocalStoragePersistence.get('compareResult').picture,
-        userName: LocalStoragePersistence.get('FBData').username,
-        characterPicture: LocalStoragePersistence.get('compareResult').character_picture,
-        characterName: LocalStoragePersistence.get('compareResult').character_name,
-        percentage: LocalStoragePersistence.get('compareResult').percentage,
+        userClassification: null,
+        userPicture: null,
+        userName: null,
+        characterPicture: null,
+        characterName: null,
+        percentage: null,
       };
     },
+    mounted() {
+      this.fillUserInformation();
+    },
     methods: {
-    }
+      clearUserInformation() {
+        this.userClassification = null;
+        this.userPicture = null;
+        this.userName = null;
+        this.characterPicture = null;
+        this.characterName = null;
+        this.percentage = null;
+      },
+      fillUserInformation() {
+        this.userClassification = LocalStoragePersistence.get('compareResult').classification;
+        this.userPicture = LocalStoragePersistence.get('compareResult').picture;
+        this.userName = LocalStoragePersistence.get('FBData').username;
+        this.characterPicture = LocalStoragePersistence.get('compareResult').character_picture;
+        this.characterName = LocalStoragePersistence.get('compareResult').character_name;
+        this.percentage = LocalStoragePersistence.get('compareResult').percentage;
+      },
+      onClickPrevious() {
+        this.$router.push({ path: 'picture' });
+      }
+    },
+    beforeDestroy() {
+      this.clearUserInformation();
+    },
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>

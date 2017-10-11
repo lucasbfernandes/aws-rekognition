@@ -1,11 +1,19 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading="isLoading" element-loading-customClass="loading">
+  	<div v-if="isLoading" style="color: #fff;">LOADING</div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+	import { mapGetters } from 'vuex';
+
 	export default {
 		name: 'app',
+		computed: {
+			...mapGetters({
+				isLoading: 'isLoading'
+			}),
+		},
 	}
 </script>

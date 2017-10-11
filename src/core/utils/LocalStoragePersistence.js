@@ -8,6 +8,10 @@ class LocalStoragePersistence {
 		let string =  window.localStorage.getItem(key)
 		return JSON.parse(string);
 	}
+
+	static remove(key) {
+		window.localStorage.removeItem(key);
+	}
 }
 
 export default LocalStoragePersistence;

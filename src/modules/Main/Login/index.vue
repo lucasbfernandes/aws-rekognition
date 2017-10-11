@@ -14,6 +14,7 @@
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
   import axios from 'axios';
 
@@ -23,11 +24,16 @@
       this.checkLoginState();
     },
     methods: {
+      ...mapActions({
+        setLoading: 'setLoading',
+      }),
+
       doRedirectHome() {
         this.$router.push({ path: 'home' });
       },
 
       onDoPushUserInformationSuccess(res) {
+        this.setLoading(false);
         if (res && res.data.result === '200') {
           this.doRedirectHome();
         } else {
@@ -36,6 +42,7 @@
       },
 
       onDoPushUserInformationError(error) {
+        this.setLoading(false);
         // TODO validations
       },
 
@@ -51,6 +58,7 @@
 
       doPushUserInformation(params) {
         let config = this.getDoPushUserInformationRequestConfig(params);
+        this.setLoading(true);
         axios(config).then(
           res => this.onDoPushUserInformationSuccess(res),
           error => this.onDoPushUserInformationError(error)

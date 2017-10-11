@@ -23,6 +23,7 @@
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
   import axios from 'axios';
 
@@ -34,7 +35,18 @@
           currentImage: null,
       }
     },
+    mounted() {
+      this.doRemoveItemStorage();
+    },
     methods: {
+      ...mapActions({
+        setLoading: 'setLoading',
+      }),
+
+      doRemoveItemStorage() {
+        LocalStoragePersistence.remove('compareResult');
+      },
+
       doRedirectResult() {
         this.$router.push({ path: 'result' });
       },
@@ -49,6 +61,7 @@
       },
 
       onSendImageForClassificationSuccess(res) {
+        this.setLoading(false);
         if (res && res.data.result === '200') {
           LocalStoragePersistence.set('compareResult', res.data);
           this.doRedirectResult();
@@ -58,6 +71,7 @@
       },
 
       onSendImageForClassificationError(error) {
+        this.setLoading(false);
         // TODO validations
       },
 
@@ -73,6 +87,7 @@
 
       sendImageForClassification(params) {
         let config = this.getSendImageForClassificationRequestConfig(params);
+        this.setLoading(true);
         axios(config).then(
           res => this.onSendImageForClassificationSuccess(res),
           error => this.onSendImageForClassificationError(error)
