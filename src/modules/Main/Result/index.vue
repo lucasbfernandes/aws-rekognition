@@ -25,7 +25,6 @@
 		</el-row>
       </main>
       <footer class="PageBox__footer">
-        <el-button class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
         <el-button class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
         <el-button class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
