@@ -1,4 +1,4 @@
-class Storage {
+class LocalStoragePersistence {
 
 	static set(key, value) {
 		window.localStorage.setItem(key, JSON.stringify(value));
@@ -8,7 +8,6 @@ class Storage {
 		let string =  window.localStorage.getItem(key)
 		return JSON.parse(string);
 	}
-
 }
 
-export default Storage;
+export default LocalStoragePersistence;

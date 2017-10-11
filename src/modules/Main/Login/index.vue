@@ -14,7 +14,8 @@
   </div>
 </template>
 <script>
-  import storage from '@core/utils/storage';
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import axios from 'axios';
 
   export default {
     name: 'login',
@@ -25,18 +26,75 @@
       doRedirectPage() {
         this.$router.push({ path: 'home' });
       },
-      doSaveLoginInformation(response) {
-        storage.set('FB', response);
-        this.doRedirectPage();
-      },
-      doLogin() {
-        FB.login(
-          response => this.doSaveLoginInformation(response)
-        )
-      },
-      checkLoginState() {
-        let fbStorage = storage.get('FB');
 
+      onDoPushUserInformationSuccess(res) {
+        if (res && res.result === '200') {
+          this.doRedirectPage();
+        } else {
+          // TODO validations
+        }
+      },
+
+      onDoPushUserInformationError(error) {
+        // TODO validations
+      },
+
+      getDoPushUserInformationRequestConfig(requestParams) {
+        return {
+          method: 'post',
+          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/Register',
+          data: requestParams,
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      doPushUserInformation(params) {
+        let config = this.getDoPushUserInformationRequestConfig(params);
+        axios(config).then(
+          res => this.onDoPushUserInformationSuccess(res),
+          error => this.onDoPushUserInformationError(error)
+        );
+      },
+
+      getDoPushUserInformationParams(data) {
+        return {
+          'user_id': data && data.id ? data.id : '',
+          'birthday': '',
+          'email': '',
+          'username': data && data.name ? data.name : '',
+          'gender': data && data.gender ? data.gender : '',
+          'hometown': '',
+          'last_access': ''
+        }
+      },
+
+      onRetrieveUserInformationSuccess(res) {
+        let params = this.getDoPushUserInformationParams(res);
+        this.doPushUserInformation(params);
+      },
+
+      doRetrieveUserInformation() {
+        FB.api('/me', {fields: 'id, name, gender'},
+          res => this.onRetrieveUserInformationSuccess(res)
+        );
+      },
+
+      doSaveLoginInformation(res) {
+        LocalStoragePersistence.set('FB', res);
+        this.doRetrieveUserInformation();
+      },
+
+      onLoginSuccess(res) {
+        this.doSaveLoginInformation(res);
+      },
+
+      doLogin() { 
+        FB.login(res => this.onLoginSuccess(res));
+      },
+
+      checkLoginState() {
+        let fbStorage = LocalStoragePersistence.get('FB');
         if (fbStorage && fbStorage.status === 'connected') {
           this.doRedirectPage();
         }

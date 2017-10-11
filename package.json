@@ -31,6 +31,7 @@
     "yargs": "^9.0.1"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "element-ui": "^1.4.6",
     "normalize.css": "^7.0.0",
     "vue": "^2.4.4",
