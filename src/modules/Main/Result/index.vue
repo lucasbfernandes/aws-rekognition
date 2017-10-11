@@ -2,23 +2,23 @@
   <div class="PageBox">
     <div class="PageBox__container">
       <header class="PageBox__header">
-        <h2>Lado Negro!</h2>
+        <h2>{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }}</h2>
       </header>
       <main>
 		<el-row type="flex" class="row-bg" justify="center">
 		  <el-col :span="7">
 		    <el-card :body-style="{ padding: '0px' }">
-		      <img src="https://vignette3.wikia.nocookie.net/starwars/images/1/15/Luke_Skywalker_Ep_7_SWCT.png/revision/latest?cb=20161230081329" class="image">
+		      <img :src="userPicture" class="image">
 		      <div class="Result__name">
-		        <span>Luke Skywalker</span>
+		        <span>{{ userName }}</span>
 		      </div>
 		    </el-card>
 		  </el-col>
 		  <el-col :span="7" :offset="2">
 		    <el-card :body-style="{ padding: '0px' }">
-		      <img src="https://vignette3.wikia.nocookie.net/starwars/images/1/15/Luke_Skywalker_Ep_7_SWCT.png/revision/latest?cb=20161230081329" class="image">
+		      <img :src="characterPicture" class="image">
 		      <div class="Result__name">
-		        <span>Luke Skywalker</span>
+		        <span>{{ characterName }}</span>
 		      </div>
 		    </el-card>
 		  </el-col>
@@ -33,8 +33,20 @@
   </div>
 </template>
 <script>
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+
   export default {
     name: 'result',
+    data() {
+      return {
+        userClassification: LocalStoragePersistence.get('compareResult').classification,
+        userPicture: LocalStoragePersistence.get('compareResult').picture,
+        userName: LocalStoragePersistence.get('FBData').username,
+        characterPicture: LocalStoragePersistence.get('compareResult').character_picture,
+        characterName: LocalStoragePersistence.get('compareResult').character_name,
+        percentage: LocalStoragePersistence.get('compareResult').percentage,
+      };
+    },
     methods: {
     }
   }

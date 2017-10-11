@@ -23,13 +23,13 @@
       this.checkLoginState();
     },
     methods: {
-      doRedirectPage() {
+      doRedirectHome() {
         this.$router.push({ path: 'home' });
       },
 
       onDoPushUserInformationSuccess(res) {
-        if (res && res.result === '200') {
-          this.doRedirectPage();
+        if (res && res.data.result === '200') {
+          this.doRedirectHome();
         } else {
           // TODO validations
         }
@@ -71,6 +71,7 @@
 
       onRetrieveUserInformationSuccess(res) {
         let params = this.getDoPushUserInformationParams(res);
+        this.doSaveUserInformation(params);
         this.doPushUserInformation(params);
       },
 
@@ -80,8 +81,12 @@
         );
       },
 
+      doSaveUserInformation(data) {
+        LocalStoragePersistence.set('FBData', data);
+      },
+
       doSaveLoginInformation(res) {
-        LocalStoragePersistence.set('FB', res);
+        LocalStoragePersistence.set('FBLogin', res);
         this.doRetrieveUserInformation();
       },
 
@@ -94,9 +99,9 @@
       },
 
       checkLoginState() {
-        let fbStorage = LocalStoragePersistence.get('FB');
+        let fbStorage = LocalStoragePersistence.get('FBLogin');
         if (fbStorage && fbStorage.status === 'connected') {
-          this.doRedirectPage();
+          this.doRedirectHome();
         }
       }
     }

@@ -17,25 +17,94 @@
       </main>
       <footer class="PageBox__footer">
         <el-button @click="onClickPrevious" class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
-        <el-button class="PageBox__button--send-image" type="primary" size="large">Enviar</el-button>
+        <el-button @click="onClickSendImage" class="PageBox__button--send-image" type="primary" size="large">Enviar</el-button>
       </footer>
     </div>
   </div>
 </template>
 <script>
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import axios from 'axios';
+
   export default {
     name: 'picture',
     data() {
       return {
           imageUrl: '',
+          currentImage: null,
       }
     },
     methods: {
+      doRedirectResult() {
+        this.$router.push({ path: 'result' });
+      },
+
       onChangePicture(file) {
         this.imageUrl = URL.createObjectURL(file.raw);
+        this.currentImage = file.raw;
       },
+
       onClickPrevious() {
         this.$router.push({ path: 'home' });
+      },
+
+      onSendImageForClassificationSuccess(res) {
+        if (res && res.data.result === '200') {
+          LocalStoragePersistence.set('compareResult', res.data);
+          this.doRedirectResult();
+        } else {
+          // TODO validations
+        }
+      },
+
+      onSendImageForClassificationError(error) {
+        // TODO validations
+      },
+
+      getSendImageForClassificationRequestConfig(requestParams) {
+        return {
+          method: 'post',
+          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/Comparer',
+          data: requestParams,
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      sendImageForClassification(params) {
+        let config = this.getSendImageForClassificationRequestConfig(params);
+        axios(config).then(
+          res => this.onSendImageForClassificationSuccess(res),
+          error => this.onSendImageForClassificationError(error)
+        );
+      },
+
+      getSendImageParams(base64Image) {
+        return {
+          'user_id': JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID,
+          'picture': base64Image ? base64Image : ''
+        }
+      },
+
+      onBase64CalculationReady(readerEvent) {
+        let base64Image = btoa(readerEvent.target.result),
+            params = this.getSendImageParams(base64Image);
+        this.sendImageForClassification(params);
+      },
+
+      calculateCurrentImageBase64() {
+        let fileReader = new FileReader();
+        fileReader.readAsBinaryString(this.currentImage);
+        return fileReader;
+      },
+
+      doCalculateCurrentImageBase64() {
+        let fileReader = this.calculateCurrentImageBase64();
+        fileReader.onload = readerEvent => this.onBase64CalculationReady(readerEvent);
+      },
+
+      onClickSendImage() {
+        this.doCalculateCurrentImageBase64();
       }
     }
   }
