@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpeg|jpg|svg|woff|woff2|ttf|eot)/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=assets/[name].[hash].[ext]',
       },
       { 
         test: /\.(css|scss)$/,
