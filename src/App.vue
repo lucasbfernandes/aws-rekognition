@@ -1,6 +1,5 @@
 <template>
   <div id="app" v-loading="isLoading" element-loading-customClass="loading">
-  	<div v-if="isLoading" style="color: #fff;">LOADING</div>
     <router-view></router-view>
   </div>
 </template>
