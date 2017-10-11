@@ -21,13 +21,21 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          transformToRequire: {
+            video: 'src',
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          }
+        }
       },
       {
         test: /\.(gif|png|jpeg|jpg|svg|woff|woff2|ttf|eot)/,
         loader: 'file-loader?name=assets/[name].[hash].[ext]',
       },
-      { 
+      {
         test: /\.(css|scss)$/,
         use: [
           { loader: 'style-loader' },

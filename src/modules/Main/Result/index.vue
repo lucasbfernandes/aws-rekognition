@@ -25,9 +25,9 @@
 		</el-row>
       </main>
       <footer class="PageBox__footer">
-        <el-button @click="onClickPrevious" class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
-        <el-button class="PageBox__button--send-image" type="primary" size="large">Enviar para a TV</el-button>
-        <el-button class="PageBox__button--send-image" type="primary" size="large">Compartilhar no Facebook</el-button>
+        <el-button class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
+        <el-button class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
+        <el-button class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
     </div>
   </div>
@@ -39,12 +39,12 @@
     name: 'result',
     data() {
       return {
-        userClassification: null,
-        userPicture: null,
-        userName: null,
-        characterPicture: null,
-        characterName: null,
-        percentage: null,
+        userClassification: LocalStoragePersistence.get('compareResult').classification,
+        userPicture: LocalStoragePersistence.get('compareResult').picture,
+        userName: LocalStoragePersistence.get('FBData').username.toLowerCase(),
+        characterPicture: LocalStoragePersistence.get('compareResult').character_picture,
+        characterName: LocalStoragePersistence.get('compareResult').character_name.toLowerCase(),
+        percentage: LocalStoragePersistence.get('compareResult').percentage,
       };
     },
     mounted() {
