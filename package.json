@@ -6,7 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.dev.config.js --history-api-fallback --hot",
-    "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
+    "build": "node_modules/.bin/webpack --config webpack/webpack.prod.config.js -p --progress --colors"
   },
   "devDependencies": {
     "babel-core": "~6.7.*",
