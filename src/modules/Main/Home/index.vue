@@ -1,14 +1,14 @@
 <template>
-  <div class="Home">
-    <div class="Home__box">
-      <header class="Home__box__header">
+  <div class="PageBox">
+    <div class="PageBox__container">
+      <header class="PageBox__header">
         <h2>baseado em uma foto sua, conseguimos dizer de qual lado da força você está!</h2>
       </header>
       <main>
       </main>
-      <footer class="Home__footer">
-        <el-button @click="onClickAbout" class="Home__footer__button--info" type="primary" size="large">Saiba mais</el-button>
-        <el-button @click="onClickNext" class="Home__footer__button--picture" type="primary" size="large">Descubra</el-button>
+      <footer class="PageBox__footer">
+        <el-button @click="onClickAbout" class="PageBox__button--previous" type="primary" size="large">Saiba mais</el-button>
+        <el-button @click="onClickNext" class="PageBox__button--picture" type="primary" size="large">Descubra</el-button>
       </footer>
     </div>
   </div>

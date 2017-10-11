@@ -1,7 +1,6 @@
 <template>
   <div class="Main">
-    <router-view></router-view>
-    <header class="Main__description Main__description--header">
+    <header class="Main__header">
       <el-row type="flex" class="row-bg" justify="start">
         <el-col :span="24">
           <div class="Main__logo Main__logo--header">
@@ -10,7 +9,8 @@
         </el-col>
       </el-row>
     </header>
-    <footer class="Main__description Main__description--footer">
+    <router-view></router-view>
+    <footer class="Main__footer">
       <el-row type="flex" class="row-bg" justify="end">
         <el-col :span="24">
           <div class="Main__logo Main__logo--footer">

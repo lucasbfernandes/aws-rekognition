@@ -1,23 +1,23 @@
 <template>
-  <div class="Picture">
-    <div class="Picture__box">
-      <header class="Picture__box__header">
+  <div class="PageBox">
+    <div class="PageBox__container">
+      <header class="PageBox__header">
         <h2>Tire uma foto de perfil:</h2>
       </header>
-      <main class="Picture__main">
+      <main class="PageBox__upload">
         <el-upload
-          class="Picture__main__upload"
+          class=""
           action=""
           :auto-upload="false"
           :show-file-list="false"
           :on-change="onChangePicture">
-          <img v-if="imageUrl" :src="imageUrl" class="Picture__main__picture">
-          <i v-else class="el-icon-plus Picture__main__upload__icon"></i>
+          <img v-if="imageUrl" :src="imageUrl" class="PageBox__upload__picture">
+          <i v-else class="el-icon-plus PageBox__upload__icon"></i>
         </el-upload>
       </main>
-      <footer class="Picture__footer">
-        <el-button @click="onClickPrevious" class="Picture__footer__button--previous" type="primary" size="large">Voltar</el-button>
-        <el-button class="Picture__footer__button--send" type="primary" size="large">Enviar</el-button>
+      <footer class="PageBox__footer">
+        <el-button @click="onClickPrevious" class="PageBox__button--previous" type="primary" size="large">Voltar</el-button>
+        <el-button class="PageBox__button--send-image" type="primary" size="large">Enviar</el-button>
       </footer>
     </div>
   </div>

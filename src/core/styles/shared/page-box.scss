@@ -1,0 +1,93 @@
+@import '~@styles/variables/variables';
+@import '~@styles/mixins/mixins';
+
+.PageBox {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: $color-black;
+  flex: 1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &__container {
+    position: relative;
+    background-color: rgba(68, 68, 68, 0.2);
+    margin: 0 auto;
+    border-radius: 8px;
+    font-family: StarJedi;
+    padding: 5px 5px;
+
+    @include phone {
+      width: 300px;
+    }
+
+    @include tablet {
+      width: 400px;
+    }
+
+    @include desktop {
+      width: 400px;
+    }
+  }
+
+  &__header {
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__footer {
+    padding: 40px 0px 10px 0px;
+    text-align: center;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &__button {
+
+    &--fb-login {
+      cursor: pointer;
+      background-color: $color-san-marino;
+      border-color: $color-san-marino;
+    }
+
+    &--picture {
+      cursor: pointer;
+      background-color: $color-sw-blue-bayoux;
+      border-color: $color-sw-blue-bayoux;
+    }
+
+    &--send-image {
+      cursor: pointer;
+      background-color: $color-sw-blue-bayoux;
+      border-color: $color-sw-blue-bayoux;
+    }
+
+    &--previous {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.0);
+      border-color: $color-gold;
+    }
+  }
+
+  &__upload {
+    text-align: center;
+    padding-top: 15px;
+
+    &__icon {
+      color: $color-white;
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+    }
+
+    &__picture {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+  }
+}

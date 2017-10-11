@@ -1,14 +1,14 @@
 <template>
-  <div class="Login">
-    <div class="Login__box">
-      <header class="Login__box__header">
+  <div class="PageBox">
+    <div class="PageBox__container">
+      <header class="PageBox__header">
         <h1>qual o seu lado da força?</h1>
       </header>
       <main>
-        
+
       </main>
-      <footer class="Login__footer">
-        <el-button @click="doLogin" class="Login__footer__button" type="primary" size="large">Entre com o Facebook</el-button>
+      <footer class="PageBox__footer">
+        <el-button @click="doLogin" class="PageBox__button--fb-login" type="primary" size="large">Entre com o Facebook</el-button>
       </footer>
     </div>
   </div>
