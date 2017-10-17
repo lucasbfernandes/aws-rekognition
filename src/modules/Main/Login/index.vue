@@ -16,6 +16,7 @@
 <script>
   import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import ValidationNotifications from '@core/utils/ValidationNotifications';
   import axios from 'axios';
 
   export default {
@@ -34,13 +35,13 @@
         if (res && res.data.result === '200') {
           this.doRedirectHome();
         } else {
-          // TODO validations
+            ValidationNotifications.showErrorMessage(this.$notify);
         }
       },
 
       onDoPushUserInformationError(error) {
         this.setLoading(false);
-        // TODO validations
+        ValidationNotifications.showErrorMessage(this.$notify);
       },
 
       getDoPushUserInformationRequestConfig(requestParams) {
