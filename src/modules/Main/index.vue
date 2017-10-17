@@ -2,9 +2,14 @@
   <div class="Main">
     <header class="Main__header">
       <el-row type="flex" class="row-bg" justify="start">
-        <el-col :span="24">
-          <div class="Main__logo Main__logo--header">
+        <el-col :span="12">
+          <div class="Main__logo Main__logo--header Main__logo--header--left">
             <img class="Main__logo__img" src="../../core/images/logo-star-wars.svg" alt="Logo Aws"/>
+          </div>
+        </el-col>
+        <el-col :span="12">
+          <div class="Main__logo Main__logo--header Main__logo--header--right">
+            <span class="Main__logout__text">Sair</span>
           </div>
         </el-col>
       </el-row>
