@@ -29,7 +29,23 @@
         <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
     </div>
+    <el-dialog
+      title="Tips"
+      :visible.sync="dialogVisible"
+      :show-close="false"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      size="large">
+      <div class="PageBox__dialog">
+        <h2>{{ messageModal }}</h2>
+      </div> 
+      <span slot="footer" class="dialog-footer">
+        <el-button class="PageBox__button--send-image" type="primary" @click="renewing">Refazer teste</el-button>
+        <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Compartilhar no Facebook</el-button>
+      </span>
+    </el-dialog>
   </div>
+  
 </template>
 <script>
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
@@ -39,6 +55,8 @@
     name: 'result',
     data() {
       return {
+        dialogVisible: false,
+        messageModal: '',
         userClassification: LocalStoragePersistence.get('compareResult').classification,
         userPicture: LocalStoragePersistence.get('compareResult').picture,
         userName: LocalStoragePersistence.get('FBData').username.toLowerCase(),
@@ -48,6 +66,11 @@
       };
     },
     methods: {
+
+      configMessageForModal(position) {
+        this.messageModal = `voce é o numero ${position}. corra para o estande voce pode ser o proximo!`;
+      },
+
       fillPayloadRequestAllowShareTv() {
         return {
           id: LocalStoragePersistence.get('compareResult')['id'],
@@ -65,8 +88,15 @@
         };
       },
 
+      openModal(res) {
+        let id = res['order_id'];
+
+        this.configMessageForModal(id);
+        this.dialogVisible = true;
+      },
+
       onRequestAllowShareSuccess(res) {
-        console.log(res);
+        this.openModal(res.data);
       },
 
       onRequestAllowShareError(error) {
@@ -94,6 +124,11 @@
              console.log(response); //Callback da função.
           }
         );
+      },
+
+      renewing() {
+        this.dialogVisible = false;
+        this.$router.push({ path: 'picture' });
       }
     }
   }
