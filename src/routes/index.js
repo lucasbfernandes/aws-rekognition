@@ -7,6 +7,7 @@ import Result from '@modules/Main/Result';
 import Login from '@modules/Main/Login';
 import Admin from '@modules/Admin';
 import Main from '@modules/Main';
+import AuthGuard from '@core/utils/AuthGuard';
 
 Vue.use(Router);
 
@@ -23,26 +24,31 @@ export default new Router({
           path: 'home',
           name: 'home',
           component: Home,
+          beforeEnter: AuthGuard.innerPagesAuthentication,
         },
         {
           path: 'about',
           name: 'about',
           component: About,
+          beforeEnter: AuthGuard.innerPagesAuthentication,
         },
         {
           path: 'picture',
           name: 'picture',
           component: Picture,
+          beforeEnter: AuthGuard.innerPagesAuthentication,
         },
         {
           path: 'result',
           name: 'result',
           component: Result,
+          beforeEnter: AuthGuard.innerPagesAuthentication,
         },
         {
           path: '/login',
           name: 'login',
           component: Login,
+          beforeEnter: AuthGuard.loginPageAuthentication,
         },
       ]
     },

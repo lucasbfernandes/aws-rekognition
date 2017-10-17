@@ -20,9 +20,6 @@
 
   export default {
     name: 'login',
-    mounted() {
-      this.checkLoginState();
-    },
     methods: {
       ...mapActions({
         setLoading: 'setLoading',
@@ -105,13 +102,6 @@
       doLogin() { 
         FB.login(res => this.onLoginSuccess(res));
       },
-
-      checkLoginState() {
-        let fbStorage = LocalStoragePersistence.get('FBLogin');
-        if (fbStorage && fbStorage.status === 'connected') {
-          this.doRedirectHome();
-        }
-      }
     }
   }
 </script>
