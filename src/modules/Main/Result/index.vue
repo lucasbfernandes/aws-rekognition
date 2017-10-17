@@ -2,7 +2,7 @@
   <div class="PageBox">
     <div class="PageBox__container">
       <header class="PageBox__header">
-        <h2>{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }}</h2>
+        <h2>{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }} |/\</h2>
       </header>
       <main>
 		<el-row type="flex" class="row-bg" justify="center">
