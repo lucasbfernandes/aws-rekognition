@@ -1,4 +1,5 @@
 @import '~normalize.css';
+@import '~@styles/variables/variables';
 @import './third-party/element-theme/index.css';
 @import './font-faces/star-wars/font-faces';
 
@@ -15,6 +16,14 @@ body {
 
 input {
   outline: 0;
+}
+
+.el-dialog {
+  background: $color-background-grey !important;
+
+  &__wrapper {
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
 }
 
 .el-upload--picture-card {

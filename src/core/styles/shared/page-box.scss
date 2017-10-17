@@ -32,6 +32,12 @@
     }
   }
 
+  &__dialog {
+    text-align: center;
+    color: $color-white;
+    font-family: StarJedi;
+  }
+
   &__header {
     color: $color-white;
     text-align: center;
