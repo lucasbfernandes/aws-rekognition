@@ -102,4 +102,20 @@
       display: block;
     }
   }
+
+  &__title {
+    &--0001 {
+      @include phone {
+        font-size: 20px;
+      }
+
+      @include tablet {
+        font-size: 25px;
+      }
+
+      @include desktop {
+        font-size: 25px;
+      }
+    }
+  }
 }
