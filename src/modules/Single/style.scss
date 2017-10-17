@@ -1,0 +1,45 @@
+@import '~@styles/variables/variables';
+@import '~@styles/mixins/mixins';
+
+.Single {
+	display: flex;
+  	flex-direction: column;
+  	min-height: 100vh;
+  	background: url(http://wallpaperwarrior.com/wp-content/uploads/2016/06/Star-Wars-Wallpaper-11-1024x576.jpg);
+  	background-size: cover;
+
+  	&__header {
+	    background: $color-background-grey;
+	    box-sizing: border-box;
+	    padding: 15px 15px;
+	    width: 100%;
+	    z-index: 100;
+  	}
+
+  	&__logo {
+  		text-align: center;
+  		&__img {
+  			width: 150px;
+  		}
+  	}
+
+  	&__carrousel {
+  		margin-top: 0px;
+  		height: auto;
+      border-radius: 50px;
+      padding: 10px;
+
+  		&__item {
+        border-radius: 50px;
+  			margin: 50px;
+  			text-align: center;
+  			background: rgba(255,255,255,0.6);
+        box-shadow:0 0 5px #fff,0 0 8px #fff,0 0 12px #fff,0 0 15px blue,0 0 25px blue;
+
+  			&__picture {
+  				width: 100%;
+  				height: 350px;
+  			}
+  		}
+  	}
+}

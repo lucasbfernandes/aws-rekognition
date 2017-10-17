@@ -26,7 +26,7 @@
       </main>
       <footer class="PageBox__footer">
         <el-button @click="requestAllowShareTv" class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
-        <el-button class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
+        <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
     </div>
   </div>
@@ -78,6 +78,21 @@
         axios(config).then(
           res => this.onRequestAllowShareSuccess(res),
           error => this.onRequestAllowShareError(error)
+        );
+      },
+
+      shareOnFacebook() {
+        FB.ui(
+          {
+            method: 'share', //Método para postar no Mural
+            href: `
+              http://app-hackaton.s3-website-us-east-1.amazonaws.com/single/${LocalStoragePersistence.get('compareResult')['id']}
+            `,
+            hashtag: '#AWSRekognition #ManticCloud'
+          },
+          response => {
+             console.log(response); //Callback da função.
+          }
         );
       }
     }

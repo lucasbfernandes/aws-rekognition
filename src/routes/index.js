@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@modules/Main/Home';
+import Single from '@modules/Single';
 import Picture from '@modules/Main/Picture';
 import About from '@modules/Main/About';
 import Result from '@modules/Main/Result';
@@ -56,6 +57,11 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin,
+    },
+    {
+      path: '/single/:id',
+      name: 'single',
+      component: Single,
     }
   ],
 });
