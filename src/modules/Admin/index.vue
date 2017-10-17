@@ -45,7 +45,7 @@
     },
 
     mounted() {
-      this.requestListUserTv();
+      this.reactorForRequest();
     },
 
     methods: {
