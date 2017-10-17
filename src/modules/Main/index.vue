@@ -9,7 +9,7 @@
         </el-col>
         <el-col :span="12">
           <div class="Main__logo Main__logo--header Main__logo--header--right">
-            <span @click="doLogout" class="Main__logout__text">Sair</span>
+            <span v-if="isNotLoginPage()" @click="doLogout" class="Main__logout__text">Sair</span>
           </div>
         </el-col>
       </el-row>
@@ -37,15 +37,18 @@
       ...mapActions({
         setLoading: 'setLoading',
       }),
-
+      onDoLogoutSuccess(response) {
+        this.setLoading(false);
+        LocalStoragePersistence.remove('FBLogin');
+        LocalStoragePersistence.remove('FBData');
+        this.$router.push({ path: '/login' });
+      },
       doLogout() {
         this.setLoading(true);
-        FB.logout((response) => {
-          this.setLoading(false);
-          LocalStoragePersistence.remove('FBLogin');
-          LocalStoragePersistence.remove('FBData');
-          this.$router.push({ path: '/login' });
-        });
+        FB.logout(response => this.onDoLogoutSuccess(response));
+      },
+      isNotLoginPage() {
+        return this.$route.path.indexOf('login') === -1;
       }
     }
   }
