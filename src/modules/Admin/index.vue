@@ -11,7 +11,7 @@
     </header>
 
     <div class="Admin__carrousel">
-      <el-carousel  :interval="4000" height="500px">
+      <el-carousel indicator-position="none"  :interval="4000" height="650px">
         <el-carousel-item v-for="item in listUsers" :key="item.order_id" >
           <div class="Admin__carrousel__item">
             <el-row type="flex" class="row-bg" justify="center">
