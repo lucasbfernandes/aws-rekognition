@@ -6,21 +6,21 @@
       </header>
       <main>
 		<el-row type="flex" class="row-bg" justify="center">
-		  <el-col :span="7">
-		    <el-card :body-style="{ padding: '0px' }">
-		      <img :src="userPicture" class="image">
-		      <div class="Result__name">
-		        <span>{{ userName }}</span>
-		      </div>
+		  <el-col :span="10">
+		    <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
+		      <img :src="userPicture" class="image Result__picture">
 		    </el-card>
+        <div class="Result__name">
+          <span>{{ userName }}</span>
+        </div>
 		  </el-col>
-		  <el-col :span="7" :offset="2">
-		    <el-card :body-style="{ padding: '0px' }">
-		      <img :src="characterPicture" class="image">
-		      <div class="Result__name">
-		        <span>{{ characterName }}</span>
-		      </div>
+		  <el-col :span="10" :offset="2">
+		    <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
+		      <img :src="characterPicture" class="image Result__picture">
 		    </el-card>
+        <div class="Result__name">
+          <span>{{ characterName }}</span>
+        </div>
 		  </el-col>
 		</el-row>
       </main>

@@ -4,7 +4,7 @@
 
 body {
   font-family: Helvetica, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 *, *:before, *:after {
@@ -35,4 +35,8 @@ input {
 .el-notification {
   width: 290px !important;
   background-color: #fff !important;
+}
+
+.el-card__body {
+  height: 100% !important;
 }

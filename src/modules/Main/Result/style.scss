@@ -4,18 +4,27 @@
   &__name {
     text-align: center;
     padding: 5px;
+    color: $color-white;
 
     @include phone {
-      font-size: 10px;
+      font-size: 14px;
     }
 
     @include tablet {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     @include desktop {
-      font-size: 14px;
+      font-size: 16px;
     }
+  }
+
+  &__picture-card {
+    height: 200px;
+  }
+
+  &__picture {
+    height: 100%;
   }
 }
 
