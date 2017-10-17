@@ -6,6 +6,8 @@ import App from './App';
 import router from './routes';
 import './core/styles/app.scss';
 
+require('font-awesome-sass-loader');
+
 Vue.use(Vuex);
 Vue.use(ElementUI);
 

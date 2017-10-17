@@ -8,6 +8,8 @@
 
   &__header {
     background: $color-background-grey;
+    font-family: StarJhol;
+    color: $color-gold;
     box-sizing: border-box;
     padding: 15px 15px;
     width: 100%;
@@ -39,16 +41,12 @@
     }
 
     &--header {
-      @include phone {
-        text-align: center;
+      &--left{
+          text-align: left;
       }
 
-      @include tablet {
-        text-align: left;
-      }
-
-      @include desktop {
-        text-align: left;
+      &--right {
+          text-align: right;
       }
     }
 
@@ -63,6 +61,24 @@
 
       @include desktop {
         text-align: right;
+      }
+    }
+  }
+
+  &__logout {
+    &__text {
+      padding-right: 20px;
+
+      @include phone {
+        line-height: 45px;
+      }
+
+      @include tablet {
+        line-height: 45px;
+      }
+
+      @include desktop {
+        line-height: 65px;
       }
     }
   }
