@@ -9,7 +9,7 @@
         </el-col>
         <el-col :span="12">
           <div class="Main__logo Main__logo--header Main__logo--header--right">
-            <span class="Main__logout__text">Sair</span>
+            <span @click="doLogout" class="Main__logout__text">Sair</span>
           </div>
         </el-col>
       </el-row>
@@ -28,8 +28,26 @@
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex';
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+
   export default {
-    name: 'main'
+    name: 'main',
+    methods: {
+      ...mapActions({
+        setLoading: 'setLoading',
+      }),
+
+      doLogout() {
+        this.setLoading(true);
+        FB.logout((response) => {
+          this.setLoading(false);
+          LocalStoragePersistence.remove('FBLogin');
+          LocalStoragePersistence.remove('FBData');
+          this.$router.push({ path: '/login' });
+        });
+      }
+    }
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
