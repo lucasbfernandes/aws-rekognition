@@ -25,6 +25,7 @@
 <script>
   import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import ValidationNotifications from '@core/utils/ValidationNotifications';
   import axios from 'axios';
 
   export default {
@@ -66,13 +67,13 @@
           LocalStoragePersistence.set('compareResult', res.data);
           this.doRedirectResult();
         } else {
-          // TODO validations
+          ValidationNotifications.showErrorMessage(this.$notify);
         }
       },
 
       onSendImageForClassificationError(error) {
         this.setLoading(false);
-        // TODO validations
+        ValidationNotifications.showErrorMessage(this.$notify);
       },
 
       getSendImageForClassificationRequestConfig(requestParams) {
