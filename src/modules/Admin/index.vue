@@ -11,18 +11,21 @@
     </header>
 
     <div class="Admin__carrousel">
-      <el-carousel  :interval="4000" type="card" >
-        <el-carousel-item v-for="item in listUsers" :key="item.id">
+      <el-carousel  :interval="4000" height="500px">
+        <el-carousel-item v-for="item in listUsers" :key="item.id" >
           <div class="Admin__carrousel__item">
             <el-row type="flex" class="row-bg" justify="center">
-              <el-col :span="24" justify="center">
+              <el-col :span="3"></el-col>
+              <el-col :span="12">
                 <h2>{{item.username}}</h2>
                 <img class="Admin__carrousel__item__picture" :src="item.picture">
               </el-col>
-              <el-col :span="24" justify="center">
+              <el-col :span="3"></el-col>
+              <el-col :span="12">
                 <h2>{{item.character_name}}</h2>
-                <img class="Admin__carrousel__item__character" :src="item.character_picture">
+                <img class="Admin__carrousel__item__picture" :src="item.character_picture">
               </el-col>
+              <el-col :span="3"></el-col>
             </el-row>
           </div>
         </el-carousel-item>
