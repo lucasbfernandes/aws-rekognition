@@ -25,7 +25,7 @@
 		</el-row>
       </main>
       <footer class="PageBox__footer">
-        <el-button class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
+        <el-button @click="requestAllowShareTv" class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
         <el-button class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
     </div>
@@ -33,6 +33,7 @@
 </template>
 <script>
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import axios from 'axios';
 
   export default {
     name: 'result',
@@ -46,6 +47,40 @@
         percentage: LocalStoragePersistence.get('compareResult').percentage,
       };
     },
+    methods: {
+      fillPayloadRequestAllowShareTv() {
+        return {
+          id: LocalStoragePersistence.get('compareResult')['id'],
+          allow_share: true
+        };
+      },
+
+      configRequestAllowShareTv() {
+        return {
+          method: 'post',
+          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/AllowShareTv',
+          data: this.fillPayloadRequestAllowShareTv(),
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      onRequestAllowShareSuccess(res) {
+        console.log(res);
+      },
+
+      onRequestAllowShareError(error) {
+        console.log(error);
+      },
+
+      requestAllowShareTv() {
+        let config = this.configRequestAllowShareTv();
+        axios(config).then(
+          res => this.onRequestAllowShareSuccess(res),
+          error => this.onRequestAllowShareError(error)
+        );
+      }
+    }
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
