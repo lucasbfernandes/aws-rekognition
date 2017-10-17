@@ -20,7 +20,9 @@
                 <h2>{{item.username}}</h2>
                 <img class="Admin__carrousel__item__picture" :src="item.picture">
               </el-col>
-              <el-col :span="3"></el-col>
+              <el-col :span="3">
+                <span class="Admin__carrousel__text">{{item.id}}</span>
+              </el-col>
               <el-col :span="12">
                 <h2>{{item.character_name}}</h2>
                 <img class="Admin__carrousel__item__picture" :src="item.character_picture">
