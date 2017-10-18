@@ -40,8 +40,10 @@
         <h2>{{ messageModal }}</h2>
       </div> 
       <span slot="footer" class="dialog-footer">
-        <el-button class="PageBox__button--send-image" type="primary" @click="renewing">Refazer teste</el-button>
-        <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Compartilhar no Facebook</el-button>
+        <div class="PageBox__footer">
+          <el-button class="PageBox__button--send-image" type="primary" @click="renewing">Refazer teste</el-button>
+          <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
+        </div>
       </span>
     </el-dialog>
   </div>
