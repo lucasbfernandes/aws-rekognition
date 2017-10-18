@@ -2,7 +2,7 @@
   <div class="PageBox">
     <div class="PageBox__container">
       <header class="PageBox__header">
-        <h2>{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }} |/\</h2>
+        <h2 class="PageBox__title--0001">{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }} |/\</h2>
       </header>
       <main>
 		<el-row type="flex" class="row-bg" justify="center">
@@ -62,7 +62,7 @@
         userName: LocalStoragePersistence.get('FBData').username.toLowerCase(),
         characterPicture: LocalStoragePersistence.get('compareResult').character_picture,
         characterName: LocalStoragePersistence.get('compareResult').character_name.toLowerCase(),
-        percentage: LocalStoragePersistence.get('compareResult').percentage,
+        percentage: parseFloat(LocalStoragePersistence.get('compareResult').percentage).toFixed(2),
       };
     },
     methods: {
