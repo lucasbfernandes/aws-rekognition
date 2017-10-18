@@ -30,7 +30,6 @@
       </footer>
     </div>
     <el-dialog
-      title="Tips"
       :visible.sync="dialogVisible"
       :show-close="false"
       :close-on-click-modal="false"

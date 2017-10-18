@@ -11,7 +11,7 @@
     </header>
 
     <div class="Admin__carrousel">
-      <el-carousel indicator-position="none"  :interval="4000" height="650px">
+      <el-carousel v-if="showSlider" indicator-position="none"  :interval="4000" height="650px">
         <el-carousel-item v-for="item in listUsers" :key="item.order_id" >
           <div class="Admin__carrousel__item">
             <el-row type="flex" class="row-bg" justify="center">
@@ -46,7 +46,8 @@
 
     data() {
       return {
-        listUsers: null,
+        listUsers: [],
+        showSlider: false
       }
     },
 
@@ -71,6 +72,7 @@
 
       onRequestListUserTvSuccess(res) {
         this.setLoading(false);
+        this.verifyRedering();
         this.listUsers = res.data;
       },
 
@@ -84,6 +86,12 @@
           res => this.onRequestListUserTvSuccess(res),
           error => this.onRequestListUserTvError(error)
         );
+      },
+
+      verifyRedering() {
+        if (this.listUsers.length > 0) {
+          this.showSlider = true;
+        }
       },
 
       reactorForRequest() {
