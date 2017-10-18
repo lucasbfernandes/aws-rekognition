@@ -39,6 +39,7 @@
   import { mapActions } from 'vuex';
   import axios from 'axios';
   import SYSTEM from '@core/constants/system';
+  import ValidationNotifications from '@core/utils/ValidationNotifications';
 
   export default {
     name: 'admin',
@@ -50,6 +51,7 @@
     },
 
     mounted() {
+      this.setLoading(true);
       this.reactorForRequest();
     },
 
@@ -68,11 +70,12 @@
       },
 
       onRequestListUserTvSuccess(res) {
+        this.setLoading(false);
         this.listUsers = res.data;
       },
 
       onRequestListUserTvError(error) {
-        console.log(error);
+        ValidationNotifications.showErrorMessage(this.$notify);
       },
 
       requestListUserTv() {
