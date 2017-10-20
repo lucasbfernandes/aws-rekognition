@@ -18,6 +18,10 @@ input {
   outline: 0;
 }
 
+.el-form-item__label {
+  color: #fff;
+}
+
 .el-dialog {
   background: $color-background-grey !important;
 

@@ -22,29 +22,4 @@
   			width: 150px;
   		}
   	}
-
-  	&__carrousel {
-  		margin-top: 0px;
-  		height: auto;
-      border-radius: 50px;
-      padding: 0px;
-
-  		&__item {
-        border-radius: 50px;
-  			margin: 50px;
-  			text-align: center;
-  			background: rgba(255,255,255,0.6);
-        box-shadow:0 0 5px #fff,0 0 8px #fff,0 0 12px #fff,0 0 15px #fff,0 0 25px #000;
-
-  			&__picture {
-  				width: 100%;
-          height: 500px;
-  			}
-  		}
-
-      &__text {
-        font-family: StarJedi;
-        font-size: 45px
-      }
-  	}
 }

@@ -1,0 +1,12 @@
+@import '~@styles/variables/variables';
+@import '~@styles/shared/page-box';
+@import '~@styles/mixins/mixins';
+
+.AdminLogin {
+	&__login {
+		width: 300px;
+		padding: 20px;
+		margin-top: 50px;
+		background: $color-background-grey;
+	}
+}
