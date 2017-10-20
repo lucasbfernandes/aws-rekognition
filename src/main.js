@@ -20,7 +20,6 @@ new Vue({
     var _this = this;
 
     window.fbAsyncInit = function() {
-      var authLoader = document.querySelector('#authentication-loader');
 
       FB.init({
         appId      : '275688566274356',
@@ -33,7 +32,7 @@ new Vue({
 
       if (_this.$route.name.indexOf('admin') === -1) {
         FB.getLoginStatus(function(response) {
-          authLoader.style.display = "none";
+          document.querySelector('#authentication-loader').style.display = "none";
           if (_this.$route.name === 'login') {
             if (response.status === 'connected') {
               _this.$router.push({ path: '/home' });
@@ -45,9 +44,17 @@ new Vue({
           }
         });
       } else {
-        authLoader.style.display = "none";
+        document.querySelector('#authentication-loader').style.display = "none";
       }
     };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
   },
   router,
   store,
