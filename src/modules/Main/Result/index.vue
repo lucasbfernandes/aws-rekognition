@@ -30,7 +30,6 @@
       </footer>
     </div>
     <el-dialog
-      title="Tips"
       :visible.sync="dialogVisible"
       :show-close="false"
       :close-on-click-modal="false"
@@ -120,7 +119,7 @@
             href: `
               http://app-hackaton.s3-website-us-east-1.amazonaws.com/single/${LocalStoragePersistence.get('compareResult')['id']}
             `,
-            hashtag: '#AWSRekognition #ManticCloud'
+            hashtag: '#AWSRekognition'
           },
           response => {
              console.log(response); //Callback da função.

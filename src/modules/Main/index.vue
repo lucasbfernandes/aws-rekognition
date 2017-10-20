@@ -37,14 +37,17 @@
       ...mapActions({
         setLoading: 'setLoading',
       }),
+      resetUserData() {
+        LocalStoragePersistence.remove('FBLogin');
+        LocalStoragePersistence.remove('FBData');
+        this.setLoading(false);
+        this.$router.push({ path: '/login' });
+      },
       doLogout() {
         this.setLoading(true);
         setTimeout(() => {
-          LocalStoragePersistence.remove('FBLogin');
-          LocalStoragePersistence.remove('FBData');
-          this.setLoading(false);
-          this.$router.push({ path: '/login' });
-         }, 300);
+          this.resetUserData();
+        }, 300);
       },
       isNotLoginPage() {
         return this.$route.path.indexOf('login') === -1;

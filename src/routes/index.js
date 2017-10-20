@@ -7,6 +7,8 @@ import About from '@modules/Main/About';
 import Result from '@modules/Main/Result';
 import Login from '@modules/Main/Login';
 import Admin from '@modules/Admin';
+import Slider from '@modules/Admin/Slider';
+import AdminLogin from '@modules/Admin/AdminLogin';
 import Main from '@modules/Main';
 import AuthGuard from '@core/utils/AuthGuard';
 
@@ -57,6 +59,19 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin,
+      redirect: '/admin-login',
+      children: [
+        {
+          path: 'slider',
+          name: 'slider',
+          component: Slider
+        },
+        {
+          path: 'admin-login',
+          name: 'admin-login',
+          component: AdminLogin
+        }
+      ]
     },
     {
       path: '/single/:id',
