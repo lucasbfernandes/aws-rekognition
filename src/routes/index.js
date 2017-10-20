@@ -59,7 +59,7 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin,
-      redirect: '/admin-login',
+      redirect: '/admin/admin-login',
       children: [
         {
           path: 'slider',
