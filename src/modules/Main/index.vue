@@ -45,9 +45,9 @@
       },
       doLogout() {
         this.setLoading(true);
-        setTimeout(() => {
+        FB.logout((response) => {
           this.resetUserData();
-        }, 300);
+        });
       },
       isNotLoginPage() {
         return this.$route.path.indexOf('login') === -1;

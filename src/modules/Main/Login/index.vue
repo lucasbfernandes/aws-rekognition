@@ -97,7 +97,9 @@
       },
 
       onLoginSuccess(res) {
-        this.doSaveLoginInformation(res);
+        if (res.authResponse) {
+          this.doSaveLoginInformation(res);
+        }
       },
 
       doLogin() { 
