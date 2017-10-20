@@ -16,6 +16,38 @@ Vue.use(ElementUI);
 
 new Vue({
   el: '#app',
+  created: function() {
+    var _this = this,
+        authLoader = document.querySelector('#authentication-loader');
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '275688566274356',
+        cookie     : true,
+        xfbml      : true,
+        status     : true,
+        version    : 'v2.10'
+      });
+      FB.AppEvents.logPageView();
+
+      if (_this.$route.name.indexOf('admin') === -1) {
+        FB.getLoginStatus(function(response) {
+          authLoader.style.display = "none";
+          if (_this.$route.name === 'login') {
+            if (response.status === 'connected') {
+              _this.$router.push({ path: '/home' });
+            }
+          } else {
+            if (response.status !== 'connected') {
+              _this.$router.push({ path: '/login' });
+            }
+          }
+        });
+      } else {
+        authLoader.style.display = "none";
+      }
+    };
+  },
   router,
   store,
   template: '<App/>',

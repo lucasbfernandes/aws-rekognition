@@ -12,20 +12,15 @@
     <title>Reconhecimento Facial - Star Wars</title>
   </head>
   <body>
+    <div id="authentication-loader" element-loading-customclass="loading">
+      <div class="el-loading-mask" style="background: rgba(0, 0, 0, 1) !important;">
+        <div class="el-loading-spinner">
+          <svg viewBox="25 25 50 50" class="circular"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle></svg>
+        </div>
+      </div>
+    </div>
     <div id="app"></div>
-
-
     <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '275688566274356',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v2.10'
-      });
-      FB.AppEvents.logPageView();   
-    };
-
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
