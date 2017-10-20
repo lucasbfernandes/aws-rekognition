@@ -36,6 +36,7 @@
     "yargs": "^9.0.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.137.0",
     "axios": "^0.16.2",
     "element-ui": "^1.4.6",
     "font-awesome": "^4.7.0",

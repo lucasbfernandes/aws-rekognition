@@ -26,6 +26,7 @@
   import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
   import ValidationNotifications from '@core/utils/ValidationNotifications';
+  import AwsSdk from '@core/utils/AwsSdk';
   import axios from 'axios';
 
   export default {
@@ -95,32 +96,68 @@
         );
       },
 
-      getSendImageParams(base64Image) {
+      getSendImageForClassificationParams(pictureId) {
         return {
           'user_id': JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID,
-          'picture': base64Image ? base64Image : ''
+          'id': pictureId ? pictureId : ''
         }
       },
 
-      onBase64CalculationReady(readerEvent) {
-        let base64Image = btoa(readerEvent.target.result),
-            params = this.getSendImageParams(base64Image);
+      onUploadImageToS3Success(res, pictureId) {
+        this.setLoading(false);
+        let params = this.getSendImageForClassificationParams(pictureId);
         this.sendImageForClassification(params);
       },
 
-      calculateCurrentImageBase64() {
-        let fileReader = new FileReader();
-        fileReader.readAsBinaryString(this.currentImage);
-        return fileReader;
+      onUploadImageToS3Error(err) {
+        this.setLoading(false);
+        ValidationNotifications.showErrorMessage(this.$notify);
       },
 
-      doCalculateCurrentImageBase64() {
-        let fileReader = this.calculateCurrentImageBase64();
-        fileReader.onload = readerEvent => this.onBase64CalculationReady(readerEvent);
+      uploadImageToS3(pictureId) {
+        this.setLoading(true);
+        AwsSdk.uploadS3(this.currentImage, pictureId).then(
+          res => this.onUploadImageToS3Success(res, pictureId),
+          err => this.onUploadImageToS3Error(err)
+        );
+      },
+
+      onGetImageIdSuccess(res) {
+        this.setLoading(false);
+        this.uploadImageToS3(res.data.id);
+      },
+
+      onGetImageIdError(error) {
+        this.setLoading(false);
+        ValidationNotifications.showErrorMessage(this.$notify);
+      },
+
+      getImageIdRequestConfig(requestParams) {
+        return {
+          method: 'get',
+          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/GetId',
+          data: requestParams,
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      getImageId(params) {
+        this.setLoading(true);
+        let config = this.getImageIdRequestConfig(params);
+        axios(config).then(
+          res => this.onGetImageIdSuccess(res),
+          error => this.onGetImageIdError(error)
+        );
+      },
+
+      getImageIdParams() {
+        return {};
       },
 
       onClickSendImage() {
-        this.doCalculateCurrentImageBase64();
+        let params = this.getImageIdParams();
+        this.getImageId(params);
       }
     }
   }
