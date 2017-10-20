@@ -26,7 +26,7 @@
       </main>
       <footer class="PageBox__footer">
         <el-button @click="requestAllowShareTv" class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
-        <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
+        <el-button @click="doShareFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
       </footer>
     </div>
     <el-dialog
@@ -41,7 +41,7 @@
       <span slot="footer" class="dialog-footer">
         <div class="PageBox__footer">
           <el-button class="PageBox__button--send-image" type="primary" @click="renewing">Refazer teste</el-button>
-          <el-button @click="shareOnFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
+          <el-button @click="doShareFacebook" class="PageBox__button--send-image" type="primary" size="large">Facebook</el-button>
         </div>
       </span>
     </el-dialog>
@@ -112,6 +112,16 @@
         );
       },
 
+      dinamyGraphApi() {
+        let meta = document.getElementsByTagName('meta'),
+            squad = this.userClassification === 0 
+                    ? 'Eu sou do lado luz!' 
+                    : 'Eu sou do lado negro!';
+
+        meta[3].setAttribute('content', squad);
+        meta[4].setAttribute('content', 'Descubra de qual lado da força você está!');
+      },
+
       shareOnFacebook() {
         FB.ui(
           {
@@ -119,12 +129,17 @@
             href: `
               http://app-hackaton.s3-website-us-east-1.amazonaws.com/single/${LocalStoragePersistence.get('compareResult')['id']}
             `,
-            hashtag: '#AWSRekognition'
+            hashtag: '#MandicCloud'
           },
           response => {
              console.log(response); //Callback da função.
           }
         );
+      },
+
+      doShareFacebook() {
+        this.dinamyGraphApi();
+        this.shareOnFacebook();
       },
 
       renewing() {
