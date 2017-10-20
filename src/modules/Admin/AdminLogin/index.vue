@@ -4,14 +4,17 @@
       <div class="AdminLogin__login">
         <el-form ref="form">
           <el-form-item label="Usuário">
-            <el-input></el-input>
+            <el-input v-model="username"></el-input>
           </el-form-item>
           <el-form-item label="Senha">
-            <el-input></el-input>
+            <el-input v-model="password"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button 
-            class="PageBox__button--send-image" type="primary" size="large">
+            <el-button
+              @click="onClick"
+              class="PageBox__button--send-image" 
+              type="primary" 
+              size="large">
               Logar
             </el-button>
           </el-form-item>
@@ -23,6 +26,19 @@
 <script>
   export default {
     name: 'admin-login',
+    data() {
+      return {
+        username: null,
+        password: null
+      }
+    },
+    methods: {
+      onClick() {
+        if (this.username === 'admin' && this.password === 'aws') {
+          this.$router.push({ path: 'slider' });
+        } 
+      }
+    }
   }
 </script>
 <style lang="scss" scoped src="./style.scss"></style>
