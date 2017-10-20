@@ -17,10 +17,11 @@ Vue.use(ElementUI);
 new Vue({
   el: '#app',
   created: function() {
-    var _this = this,
-        authLoader = document.querySelector('#authentication-loader');
+    var _this = this;
 
     window.fbAsyncInit = function() {
+      var authLoader = document.querySelector('#authentication-loader');
+
       FB.init({
         appId      : '275688566274356',
         cookie     : true,
