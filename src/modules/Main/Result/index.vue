@@ -49,7 +49,9 @@
   
 </template>
 <script>
+  import { mapActions } from 'vuex';
   import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import ValidationNotifications from '@core/utils/ValidationNotifications';
   import axios from 'axios';
 
   export default {
@@ -67,6 +69,9 @@
       };
     },
     methods: {
+      ...mapActions({
+        setLoading: 'setLoading',
+      }),
 
       configMessageForModal(position) {
         this.messageModal = `voce é o numero ${position}. corra para o estande voce pode ser o proximo!`;
@@ -97,15 +102,18 @@
       },
 
       onRequestAllowShareSuccess(res) {
+        this.setLoading(false);
         this.openModal(res.data);
       },
 
       onRequestAllowShareError(error) {
-        console.log(error);
+        this.setLoading(false);
+        ValidationNotifications.showErrorMessage(this.$notify);
       },
 
       requestAllowShareTv() {
         let config = this.configRequestAllowShareTv();
+        this.setLoading(true);
         axios(config).then(
           res => this.onRequestAllowShareSuccess(res),
           error => this.onRequestAllowShareError(error)

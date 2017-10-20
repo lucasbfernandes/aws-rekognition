@@ -7,7 +7,7 @@
             <el-input v-model="username"></el-input>
           </el-form-item>
           <el-form-item label="Senha">
-            <el-input v-model="password"></el-input>
+            <el-input type="password" v-model="password"></el-input>
           </el-form-item>
           <el-alert
             class="AdminLogin__login__error"
