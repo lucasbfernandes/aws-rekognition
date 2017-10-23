@@ -5,7 +5,7 @@
         <el-carousel-item v-for="item in listUsers" :key="item.order_id" >
           <div class="Slider__carrousel__item">
             <el-row type="flex" class="row-bg" justify="center">
-              <h2 class="PageBox__title--0001">{{ item.classification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ parseFloat(item.percentage).toFixed(2) }} |/\</h2>
+              <h2 class="PageBox__title--0001">{{ item.classification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ parseFloat(item.percentage).toFixed(2) }}%</h2>
             </el-row>
             <el-row type="flex" class="row-bg" justify="center">
               <el-col :span="3"></el-col>
