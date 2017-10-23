@@ -1,5 +1,6 @@
 @import '~@styles/variables/variables';
 @import '~@styles/mixins/mixins';
+@import '~@styles/shared/page-box';
 
 .Slider {
 
@@ -27,4 +28,11 @@
         font-size: 45px
       }
   	}
+
+    &__name {
+      font-family: StarJedi;
+      font-size: 30px;
+      margin-bottom: 10px;
+      margin-top: 0px;
+    }
 }
