@@ -6,7 +6,7 @@
           <span>Choose the Force</span>
         </p>
         <p>
-         A Mandic Cloud Solutions e a AWS apresentam em primeira mão uma solução divertida que mostra seu lado da força, de acordo com arquitetura serverless desenvolvida em parceria com alunos daUniversidade Federal de Uberlândia.
+         A Mandic Cloud Solutions e a AWS apresentam em primeira mão uma solução divertida que mostra seu lado da força, de acordo com arquitetura serverless desenvolvida em parceria com alunos da Universidade Federal de Uberlândia.
         </p>
 
         <p>
