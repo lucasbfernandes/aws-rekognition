@@ -2,27 +2,27 @@
   <div class="PageBox">
     <div class="PageBox__container">
       <header class="PageBox__header">
-        <h2 class="PageBox__title--0001">{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }} |/\</h2>
+        <h2 class="PageBox__title--0001">{{ userClassification === 0 ? 'Lado da Luz!' : 'Lado Negro!'}} - {{ percentage }}%</h2>
       </header>
       <main>
-		<el-row type="flex" class="row-bg" justify="center">
-		  <el-col :span="10">
-		    <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
-		      <img :src="userPicture" class="image Result__picture">
-		    </el-card>
+    <el-row type="flex" class="row-bg" justify="center">
+      <el-col :span="10">
+        <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
+          <img :src="userPicture" class="image Result__picture">
+        </el-card>
         <div class="Result__name">
           <span>{{ userName }}</span>
         </div>
-		  </el-col>
-		  <el-col :span="10" :offset="2">
-		    <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
-		      <img :src="characterPicture" class="image Result__picture">
-		    </el-card>
+      </el-col>
+      <el-col :span="10" :offset="2">
+        <el-card class="Result__picture-card" :body-style="{ padding: '0px' }">
+          <img :src="characterPicture" class="image Result__picture">
+        </el-card>
         <div class="Result__name">
           <span>{{ characterName }}</span>
         </div>
-		  </el-col>
-		</el-row>
+      </el-col>
+    </el-row>
       </main>
       <footer class="PageBox__footer">
         <el-button @click="requestAllowShareTv" class="PageBox__button--send-image" type="primary" size="large">TV</el-button>
