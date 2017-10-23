@@ -4,7 +4,7 @@
       <el-row type="flex" class="row-bg" justify="start">
         <el-col :span="12">
           <div class="Main__logo Main__logo--header Main__logo--header--left">
-            <img class="Main__logo__img" src="../../core/images/logo-star-wars.svg" alt="Logo Aws"/>
+            <img class="Main__logo__img__logo" src="../../core/images/choose-the-force_versao-01.svg" alt="Logo Aws"/>
           </div>
         </el-col>
         <el-col :span="12">
@@ -19,7 +19,7 @@
       <el-row type="flex" class="row-bg" justify="end">
         <el-col :span="24">
           <div class="Main__logo Main__logo--footer">
-            <img class="Main__logo__img" src="../../core/images/logo-aws-2.svg" alt="Logo Aws"/>
+            <img class="Main__logo__img__aws" src="../../core/images/aws_logo.png" alt="Logo Aws"/>
             <img class="Main__logo__img" src="../../core/images/logo-mandic.png" alt="Logo Mandic"/>
           </div>
         </el-col>

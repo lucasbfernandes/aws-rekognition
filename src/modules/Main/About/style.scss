@@ -42,11 +42,11 @@
   .titlecontent{
     position: absolute;
     top: 100%;
-    animation: scroll 70s linear 1s infinite;
+    animation: scroll 50s linear 0s infinite;
   }
 
   @keyframes scroll {
-    0% { top: 100%; }
+    0% { top: 90%; }
     100% { top: -170%; }
   }
 }

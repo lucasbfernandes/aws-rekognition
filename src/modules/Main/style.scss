@@ -28,16 +28,45 @@
   &__logo {
 
     &__img {
+
+
       @include phone {
         width: 100px;
+
+        &__logo {
+          width:  100%;
+        }
+
+        &__aws {
+          width:  50px;
+          margin-right: 10px;
+        }
       }
 
       @include tablet {
         width: 100px;
+
+        &__logo {
+          width:  150px;
+        }
+
+        &__aws {
+          width:  50px;
+          margin-right: 10px;
+        }
       }
 
       @include desktop {
         width: 150px;
+
+        &__logo {
+          width:  200px;
+        }
+
+        &__aws {
+          width:  60px;
+          margin-right: 10px;
+        }
       }
     }
 
