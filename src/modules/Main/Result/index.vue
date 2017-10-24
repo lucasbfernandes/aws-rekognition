@@ -74,7 +74,7 @@
       }),
 
       configMessageForModal(position) {
-        this.messageModal = `voce é o numero ${position}. vá até o estande da mandic cloud ou da aws! voce pode ser o próximo a ser exibido na tela!`;
+        this.messageModal = `você é o numero ${position}. vá até o estande da mandic cloud ou da aws! você pode ser o próximo a ser exibido na tela!`;
       },
 
       fillPayloadRequestAllowShareTv() {
@@ -87,7 +87,7 @@
       configRequestAllowShareTv() {
         return {
           method: 'post',
-          url: 'http://http://ec2-52-91-50-100.compute-1.amazonaws.com/AllowShareTv',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/AllowShareTv',
           data: this.fillPayloadRequestAllowShareTv(),
           headers: {'Content-Type': 'application/json' },
           json: true

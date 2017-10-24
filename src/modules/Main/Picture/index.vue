@@ -123,7 +123,7 @@
       uploadImageToS3() {
         this.setLoading(true);
         AwsSdk.uploadS3(this.currentImage, this.nextImageId).then(
-          res => this.onUploadImageToS3Success(res, pictureId),
+          res => this.onUploadImageToS3Success(res, this.nextImageId),
           err => this.onUploadImageToS3Error(err)
         );
       },
@@ -145,12 +145,14 @@
       },
 
       onRetrieveUserInformationSuccess(res) {
+        this.setLoading(false);
         this.userInformation = this.getParsedUserInformation(res);
         this.doSaveUserInformation(this.userInformation);
         this.uploadImageToS3();
       },
 
       doRetrieveUserInformation() {
+        this.setLoading(true);
         FB.api('/me', {fields: 'id, name, gender'},
           res => this.onRetrieveUserInformationSuccess(res)
         );
@@ -175,9 +177,10 @@
       },
 
       getImageIdRequestConfig(requestParams) {
+        let userId = JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID;
         return {
           method: 'get',
-          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/GetId',
+          url: `http://ec2-52-91-50-100.compute-1.amazonaws.com/GetId?userid=${userId}`,
           data: requestParams,
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -193,15 +196,8 @@
         );
       },
 
-      getImageIdParams() {
-        return {
-          'user_id': JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID
-        };
-      },
-
       onClickSendImage() {
-        let params = this.getImageIdParams();
-        this.getImageId(params);
+        this.getImageId();
       }
     }
   }
