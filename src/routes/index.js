@@ -9,6 +9,7 @@ import Login from '@modules/Main/Login';
 import Admin from '@modules/Admin';
 import Slider from '@modules/Admin/Slider';
 import AdminLogin from '@modules/Admin/AdminLogin';
+import Control from '@modules/Admin/Control';
 import Main from '@modules/Main';
 import AuthGuard from '@core/utils/AuthGuard';
 
@@ -65,6 +66,11 @@ export default new Router({
           path: 'admin-login',
           name: 'admin-login',
           component: AdminLogin
+        },
+        {
+          path: 'control',
+          name: 'control',
+          component: Control
         }
       ]
     },
