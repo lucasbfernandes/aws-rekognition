@@ -1,7 +1,7 @@
 <template>
   <div class="Control">
     <el-table
-      v-if="listUsers"
+      v-if="showTable"
       :data="listUsers"
       border
       style="width: 100%">
@@ -55,12 +55,13 @@
 
     data() {
       return {
-        listUsers: []
+        listUsers: [],
+        showTable: false
       }
     },
 
     mounted() {
-      this.requestListUserTv();
+      this.reactorForRequest();
     },
 
     methods: {
@@ -79,6 +80,7 @@
 
       onRequestListUserTvSuccess(res) {
         this.listUsers = res.data;
+        this.verifyRedering();
       },
 
       onRequestListUserTvError(error) {
@@ -91,6 +93,19 @@
           res => this.onRequestListUserTvSuccess(res),
           error => this.onRequestListUserTvError(error)
         );
+      },
+
+      verifyRedering() {
+        if (this.listUsers.length > 0) {
+          this.showTable = true;
+        }
+      },
+
+      reactorForRequest() {
+        setTimeout( res => {
+          this.requestListUserTv();
+          this.reactorForRequest();
+        }, SYSTEM.TIME_FOR_REQUEST );
       },
 
       fillPayloadRequestExcludeUser(id) {
@@ -174,7 +189,8 @@
 
       handleBan(index, userId) {
         this.requestBanUser(userId);
-      }
+      },
+
     }
   }
 </script>
