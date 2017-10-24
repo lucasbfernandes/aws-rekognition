@@ -89,7 +89,7 @@
       getSendImageForClassificationRequestConfig(requestParams) {
         return {
           method: 'post',
-          url: 'http://ec2-54-237-199-201.compute-1.amazonaws.com/Comparer',
+          url: 'http://ec2-34-234-74-53.compute-1.amazonaws.com/Comparer',
           data: requestParams,
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -188,7 +188,7 @@
         let userId = JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID;
         return {
           method: 'get',
-          url: `http://ec2-54-237-199-201.compute-1.amazonaws.com/GetId?userid=${userId}`,
+          url: `http://ec2-34-234-74-53.compute-1.amazonaws.com/GetId?userid=${userId}`,
           data: requestParams,
           headers: {'Content-Type': 'application/json' },
           json: true
