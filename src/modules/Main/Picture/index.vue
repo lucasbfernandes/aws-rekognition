@@ -197,7 +197,11 @@
       },
 
       onClickSendImage() {
-        this.getImageId();
+        if (this.currentImage) {
+          this.getImageId();
+        } else {
+          ValidationNotifications.showErrorMessage(this.$notify, 'Selecione uma imagem para prosseguir no fluxo.');
+        }
       }
     }
   }
