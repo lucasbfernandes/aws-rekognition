@@ -103,7 +103,7 @@
       configRequestExcludeUser(id) {
         return {
           method: 'post',
-          url: 'http://http://ec2-52-91-50-100.compute-1.amazonaws.com/AllowShareTv',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/AllowShareTv',
           data: this.fillPayloadRequestExcludeUser(id),
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -111,12 +111,14 @@
       },
 
       onRequestExcludeUserSuccess() {
-        ValidationNotifications.showErrorMessage(this.$notify);
+        this.setLoading(false);
+        ValidationNotifications.showSuccessMessage(this.$notify, 'Usuário excluido com sucesso');
         this.requestListUserTv();
       },
 
       onRequestExcludeUserError() {
-        ValidationNotifications.showErrorMessage(this.$notify);
+        this.setLoading(false);
+        ValidationNotifications.showErrorMessage(this.$notify, 'Erro ao excluir usuário');
       },
 
 
@@ -131,11 +133,47 @@
 
       handleExclude(index, id) {
         this.requestExcludeUser(id);
-      },      
+      },
 
-      handleBan(index, row) {
-        console.log(index);
-        console.log(row);
+      fillPayloadRequestBanUser(userId) {
+        return {
+          user_id: userId
+        };
+      },
+
+      configRequestBanUser(userId) {
+        return {
+          method: 'post',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/Ban',
+          data: this.fillPayloadRequestBanUser(userId),
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      onRequestBanUserSuccess() {
+        this.setLoading(false);
+        ValidationNotifications.showSuccessMessage(this.$notify, 'Usuário banido com sucesso');
+        this.requestListUserTv();
+      },
+
+      onRequestBanUserError() {
+        this.setLoading(false);
+        ValidationNotifications.showErrorMessage(this.$notify, 'Erro ao banir usuário');
+      },
+
+
+      requestBanUser(userId) {
+        let config = this.configRequestBanUser(userId);
+        this.setLoading(true);
+        axios(config).then(
+          res => this.onRequestBanUserSuccess(res),
+          error => this.onRequestBanUserError(error)
+        );
+      },  
+
+      handleBan(index, userId) {
+        this.requestBanUser(userId);
       }
     }
   }

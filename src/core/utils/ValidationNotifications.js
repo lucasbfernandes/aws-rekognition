@@ -8,7 +8,7 @@ class ValidationNotifications {
   }
 
   static showSuccessMessage($notify, message) {
-    $notify.error({
+    $notify({
       title: 'Success',
       message: message ? message : 'Sucesso ao executar ação',
       type: 'success'
