@@ -63,13 +63,21 @@
         this.$router.push({ path: 'home' });
       },
 
+      formatErrorMessage(message) {
+        if (message && message.indexOf('sem resultado') !== -1) {
+          return 'Comparação sem resultado. Tente novamente com outra foto!';
+        }
+
+        return null;
+      },
+
       onSendImageForClassificationSuccess(res) {
         this.setLoading(false);
         if (res && res.data.result === '200') {
           LocalStoragePersistence.set('compareResult', res.data);
           this.doRedirectResult();
         } else {
-          ValidationNotifications.showErrorMessage(this.$notify);
+          ValidationNotifications.showErrorMessage(this.$notify, this.formatErrorMessage(res.data.description));
         }
       },
 
