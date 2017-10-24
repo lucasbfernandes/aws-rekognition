@@ -74,7 +74,7 @@
       }),
 
       configMessageForModal(position) {
-        this.messageModal = `voce é o numero ${position}. corra para o estande voce pode ser o proximo!`;
+        this.messageModal = `voce é o numero ${position}. vá até o estande da mandic cloud ou da aws! voce pode ser o próximo a ser exibido na tela!`;
       },
 
       fillPayloadRequestAllowShareTv() {
