@@ -117,5 +117,20 @@
         font-size: 25px;
       }
     }
+
+    &--0002 {
+      font-family: StarJedi;
+      @include phone {
+        font-size: 20px;
+      }
+
+      @include tablet {
+        font-size: 25px;
+      }
+
+      @include desktop {
+        font-size: 30px;
+      }
+    }
   }
 }
