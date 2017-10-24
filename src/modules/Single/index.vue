@@ -48,7 +48,7 @@
       configRequestListUserOrderId(orderId) {
         return {
           method: 'get',
-          url: `http://ec2-34-229-73-88.compute-1.amazonaws.com/ListResult?id=${orderId}`,
+          url: `http://ec2-52-91-50-100.compute-1.amazonaws.com/ListResult?id=${orderId}`,
           headers: {'Content-Type': 'application/json' },
           json: true
         };

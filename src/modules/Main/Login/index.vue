@@ -30,79 +30,22 @@
         this.$router.push({ path: 'home' });
       },
 
-      onDoPushUserInformationSuccess(res) {
-        this.setLoading(false);
-        if (res && res.data.result === '200') {
-          this.doRedirectHome();
-        } else {
-            ValidationNotifications.showErrorMessage(this.$notify);
-        }
-      },
-
-      onDoPushUserInformationError(error) {
-        this.setLoading(false);
-        ValidationNotifications.showErrorMessage(this.$notify);
-      },
-
-      getDoPushUserInformationRequestConfig(requestParams) {
-        return {
-          method: 'post',
-          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/Register',
-          data: requestParams,
-          headers: {'Content-Type': 'application/json' },
-          json: true
-        };
-      },
-
-      doPushUserInformation(params) {
-        let config = this.getDoPushUserInformationRequestConfig(params);
-        this.setLoading(true);
-        axios(config).then(
-          res => this.onDoPushUserInformationSuccess(res),
-          error => this.onDoPushUserInformationError(error)
-        );
-      },
-
-      getDoPushUserInformationParams(data) {
-        return {
-          'user_id': data && data.id ? data.id : '',
-          'birthday': '',
-          'email': '',
-          'username': data && data.name ? data.name : '',
-          'gender': data && data.gender ? data.gender : '',
-          'hometown': '',
-          'last_access': ''
-        }
-      },
-
-      onRetrieveUserInformationSuccess(res) {
-        let params = this.getDoPushUserInformationParams(res);
-        this.doSaveUserInformation(params);
-        this.doPushUserInformation(params);
-      },
-
-      doRetrieveUserInformation() {
-        FB.api('/me', {fields: 'id, name, gender'},
-          res => this.onRetrieveUserInformationSuccess(res)
-        );
-      },
-
-      doSaveUserInformation(data) {
-        LocalStoragePersistence.set('FBData', data);
-      },
-
       doSaveLoginInformation(res) {
         LocalStoragePersistence.set('FBLogin', res);
-        this.doRetrieveUserInformation();
       },
 
       onLoginSuccess(res) {
-        if (res.authResponse) {
+        this.setLoading(false);
+        if (res && res.authResponse) {
           this.doSaveLoginInformation(res);
+          this.doRedirectHome();
+        } else {
+          ValidationNotifications.showErrorMessage(this.$notify);
         }
       },
 
       doLogin() { 
+        this.setLoading(true);
         FB.login(res => this.onLoginSuccess(res));
       },
     }

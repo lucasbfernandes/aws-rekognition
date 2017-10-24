@@ -57,7 +57,7 @@
       configForListUserTv() {
         return {
           method: 'get',
-          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/ListResult',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/ListResult',
           headers: {'Content-Type': 'application/json' },
           json: true
         };

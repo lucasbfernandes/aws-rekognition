@@ -1,9 +1,9 @@
 class ValidationNotifications {
 
-  static showErrorMessage($notify) {
+  static showErrorMessage($notify, message) {
     $notify.error({
       title: 'Erro',
-      message: 'Ocorreu um erro no serviço'
+      message: message ? message : 'Ocorreu um erro no serviço'
     });
   }
 }

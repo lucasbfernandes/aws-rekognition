@@ -87,7 +87,7 @@
       configRequestAllowShareTv() {
         return {
           method: 'post',
-          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/AllowShareTv',
+          url: 'http://http://ec2-52-91-50-100.compute-1.amazonaws.com/AllowShareTv',
           data: this.fillPayloadRequestAllowShareTv(),
           headers: {'Content-Type': 'application/json' },
           json: true

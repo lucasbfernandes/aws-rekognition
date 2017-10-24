@@ -35,6 +35,7 @@
       return {
           imageUrl: '',
           currentImage: null,
+          nextImageId: null
       }
     },
     mounted() {
@@ -80,7 +81,7 @@
       getSendImageForClassificationRequestConfig(requestParams) {
         return {
           method: 'post',
-          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/Comparer',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/Comparer',
           data: requestParams,
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -99,7 +100,12 @@
       getSendImageForClassificationParams(pictureId) {
         return {
           'user_id': JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID,
-          'id': pictureId ? pictureId : ''
+          'id': pictureId ? pictureId : '',
+          'birthday': JSON.parse(localStorage.getItem('FBData')).birthday,
+          'email': JSON.parse(localStorage.getItem('FBData')).email,
+          'username': JSON.parse(localStorage.getItem('FBData')).username,
+          'gender': JSON.parse(localStorage.getItem('FBData')).gender,
+          'hometown': JSON.parse(localStorage.getItem('FBData')).hometown,
         }
       },
 
@@ -114,17 +120,53 @@
         ValidationNotifications.showErrorMessage(this.$notify);
       },
 
-      uploadImageToS3(pictureId) {
+      uploadImageToS3() {
         this.setLoading(true);
-        AwsSdk.uploadS3(this.currentImage, pictureId).then(
+        AwsSdk.uploadS3(this.currentImage, this.nextImageId).then(
           res => this.onUploadImageToS3Success(res, pictureId),
           err => this.onUploadImageToS3Error(err)
         );
       },
 
+      doSaveUserInformation(data) {
+        LocalStoragePersistence.set('FBData', data);
+      },
+
+      getParsedUserInformation(data) {
+        return {
+          'user_id': data && data.id ? data.id : '',
+          'birthday': '',
+          'email': '',
+          'username': data && data.name ? data.name : '',
+          'gender': data && data.gender ? data.gender : '',
+          'hometown': '',
+          'last_access': ''
+        }
+      },
+
+      onRetrieveUserInformationSuccess(res) {
+        this.userInformation = this.getParsedUserInformation(res);
+        this.doSaveUserInformation(this.userInformation);
+        this.uploadImageToS3();
+      },
+
+      doRetrieveUserInformation() {
+        FB.api('/me', {fields: 'id, name, gender'},
+          res => this.onRetrieveUserInformationSuccess(res)
+        );
+      },
+
       onGetImageIdSuccess(res) {
         this.setLoading(false);
-        this.uploadImageToS3(res.data.id);
+        if (res.data.id >= 0) {
+          this.nextImageId = res.data.id;
+          this.doRetrieveUserInformation();
+        } else {
+          ValidationNotifications.showErrorMessage(
+            this.$notify,
+            'O envio da imagem não foi permitido para a sua conta.'
+          );
+        }
       },
 
       onGetImageIdError(error) {
@@ -135,7 +177,7 @@
       getImageIdRequestConfig(requestParams) {
         return {
           method: 'get',
-          url: 'http://ec2-34-229-73-88.compute-1.amazonaws.com/GetId',
+          url: 'http://ec2-52-91-50-100.compute-1.amazonaws.com/GetId',
           data: requestParams,
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -152,7 +194,9 @@
       },
 
       getImageIdParams() {
-        return {};
+        return {
+          'user_id': JSON.parse(localStorage.getItem('FBLogin')).authResponse.userID
+        };
       },
 
       onClickSendImage() {
