@@ -33,6 +33,9 @@ new Vue({
       if (_this.$route.name.indexOf('admin') === -1) {
         FB.getLoginStatus(function(response) {
           document.querySelector('#authentication-loader').style.display = "none";
+          if (response.status === 'connected') {
+            window.localStorage.setItem('FBLogin', JSON.stringify(response));
+          }
           if (_this.$route.name === 'login') {
             if (response.status === 'connected') {
               _this.$router.push({ path: '/home' });
@@ -40,6 +43,8 @@ new Vue({
           } else {
             if (response.status !== 'connected') {
               _this.$router.push({ path: '/login' });
+            } else if (_this.$route.name !== 'home') {
+              _this.$router.push({ path: '/home' });
             }
           }
         });

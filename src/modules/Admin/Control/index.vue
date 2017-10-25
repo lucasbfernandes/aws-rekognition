@@ -72,7 +72,7 @@
       configForListUserTv() {
         return {
           method: 'get',
-          url: 'http://ec2-54-237-199-201.compute-1.amazonaws.com/ListResult',
+          url: 'http://ec2-34-234-74-53.compute-1.amazonaws.com/ListResult',
           headers: {'Content-Type': 'application/json' },
           json: true
         };
@@ -118,7 +118,7 @@
       configRequestExcludeUser(id) {
         return {
           method: 'post',
-          url: 'http://ec2-54-237-199-201.compute-1.amazonaws.com/AllowShareTv',
+          url: 'http://ec2-34-234-74-53.compute-1.amazonaws.com/AllowShareTv',
           data: this.fillPayloadRequestExcludeUser(id),
           headers: {'Content-Type': 'application/json' },
           json: true
@@ -159,7 +159,7 @@
       configRequestBanUser(userId) {
         return {
           method: 'post',
-          url: 'http://ec2-54-237-199-201.compute-1.amazonaws.com/Ban',
+          url: 'http://ec2-34-234-74-53.compute-1.amazonaws.com/Ban',
           data: this.fillPayloadRequestBanUser(userId),
           headers: {'Content-Type': 'application/json' },
           json: true
