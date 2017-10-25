@@ -9,6 +9,10 @@
 		margin-top: 50px;
 		background: $color-background-grey;
 
+		&__button {
+			margin-bottom: 20px;
+		}
+
 		&__error {
 			margin-top: 20px;
 			margin-bottom: 20px;

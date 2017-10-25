@@ -49,6 +49,7 @@
   import axios from 'axios';
   import SYSTEM from '@core/constants/system';
   import ValidationNotifications from '@core/utils/ValidationNotifications';
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
 
   export default {
     name: 'control',
@@ -61,6 +62,7 @@
     },
 
     mounted() {
+      this.verifyIsLogged();
       this.reactorForRequest();
     },
 
@@ -68,6 +70,16 @@
       ...mapActions({
         setLoading: 'setLoading',
       }),
+
+      verifyIsLogged() {
+        let session = LocalStoragePersistence.get('admin-session');
+
+        if (!session) {
+          this.$router.push({ path: 'admin-login' });
+        }
+
+        return;
+      },
 
       configForListUserTv() {
         return {
