@@ -12,6 +12,21 @@
         <p>
           Fale com um Especialista para conhecer detalhes da arquitetura e como o uso de soluções AWS gerenciadas pode contribuir com resultados significativos para seus negócios.
         </p>
+        <p style="text-align: center;">
+          <span>Desenvolvedores:</span>
+        </p>
+        <p style="text-align: center;">
+          Lucas Borges Fernandes
+        </p>
+        <p style="text-align: center;">
+          Marcos Paulo Vilela Santos
+        </p>
+        <p style="text-align: center;">
+          Maycon Junio Pereira Pacheco
+        </p>
+        <p style="text-align: center;">
+          Pedro Victor Guerra de Figueiredo
+        </p>
       </div>
     </div>
     <div class="About__buttons">
