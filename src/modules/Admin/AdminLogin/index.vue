@@ -17,21 +17,33 @@
             :closable="false"
             show-icon>
           </el-alert>
-          <el-form-item>
+          <el-row type="flex" class="row-bg" justify="center">
             <el-button
-              @click="onClick"
-              class="PageBox__button--send-image" 
+              @click="onClick('slider')"
+              class="PageBox__button--send-image AdminLogin__login__button" 
               type="primary" 
               size="large">
-              Logar
+              Logar para slider
             </el-button>
-          </el-form-item>
+          </el-row>
+          <el-row type="flex" class="row-bg" justify="center">
+            <el-button
+              @click="onClick('control')"
+              class="PageBox__button--send-image AdminLogin__login__button" 
+              type="primary" 
+              size="large">
+              Logar para controle
+            </el-button>
+          </el-row>
         </el-form>
       </div>
     </el-row>
   </div>
 </template>
 <script>
+  import LocalStoragePersistence from '@core/utils/LocalStoragePersistence';
+  import axios from 'axios';
+
   export default {
     name: 'admin-login',
     data() {
@@ -42,14 +54,59 @@
       }
     },
     methods: {
-      onClick() {
-        if (this.username === 'admin' && this.password === 'aws') {
-          this.showError = false;
+
+      requestLoginConfig(requestParams) {
+        return {
+          method: 'post',
+          url: 'http://ec2-34-234-74-53.compute-1.amazonaws.com/Pass',
+          data: requestParams,
+          headers: {'Content-Type': 'application/json' },
+          json: true
+        };
+      },
+
+      doLogin(type) {
+        let payload = { 
+          username: this.username, 
+          senha: btoa(this.password)
+        };
+        this.requestLogin(payload, type);
+      },
+
+      doRedirectPage(type) {
+        if (type === 'slider') {
           this.$router.push({ path: 'slider' });
+        } else {
+          this.$router.push({ path: 'control' });
+        }
+      },
+
+      requestLoginSuccess(res, type) {
+        if (res.data.result === '200') {
+          this.showError = false;
+          LocalStoragePersistence.set('admin-session', 'true');
+          this.doRedirectPage(type);
         } else {
           this.showError = true;
         }
-      }
+      },
+
+      requestLoginError(error) {
+
+      },
+
+      requestLogin(params, type) {
+        let config = this.requestLoginConfig(params);
+        axios(config).then(
+          res => this.requestLoginSuccess(res, type),
+          error => this.requestLoginError(error)
+        );
+      },
+
+      onClick(type) {
+        this.doLogin(type);
+      },
+
     }
   }
 </script>
