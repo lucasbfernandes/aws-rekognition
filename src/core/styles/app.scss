@@ -1,7 +1,7 @@
-@import '~normalize.css';
-@import '~@styles/variables/variables';
-@import './third-party/element-theme/index.css';
-@import './font-faces/star-wars/font-faces';
+@import url('~normalize.css');
+@import url('~@styles/variables/variables');
+@import url('./third-party/element-theme/index.css');
+@import url('./font-faces/star-wars/font-faces');
 
 body {
   font-family: Helvetica, sans-serif;
